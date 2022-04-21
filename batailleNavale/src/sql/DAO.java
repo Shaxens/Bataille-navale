@@ -1,9 +1,9 @@
 package sql;
 
 import java.util.ArrayList;
-import java.sql.*;
 
-public interface DAO
+public interface DAO<T>
 {
-    public ArrayList<E> getAll();
+    abstract ArrayList<T> getAll();
+
 }

@@ -5,9 +5,12 @@ public class Connexion
 {
     // ATTRIBUT
     private static Connexion instance;
+    private Connection mySqlConnection;
 
     // Constructeur
-    private Connexion() {
+    private Connexion()
+    {
+
     }
 
     // METHODES
