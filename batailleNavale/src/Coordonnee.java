@@ -23,7 +23,5 @@ public class Coordonnee
     public void setPositionX(char positionX) {
         this.positionX = positionX;
     }
-    public void setPositionY(int positionY) {
-        this.positionY = positionY;
-    }
+    public void setPositionY(int positionY) { this.positionY = positionY; }
 }

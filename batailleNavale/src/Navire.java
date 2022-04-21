@@ -3,11 +3,11 @@ import java.util.ArrayList;
 public class Navire
 {
     // Attributs
-    private int id;
-    private TypeNavire type;
-    private int longueur;
-    private ArrayList<Coordonnee> position;
-    private boolean inFlotte;
+    private int id; // id du bateau issu de la bdd
+    private TypeNavire type; // type du navire qui définira sa longueur (lien fait dans la bdd)
+    private int longueur; // La longueur correspond au nombre de point du bateau à toucher
+    private ArrayList<Coordonnee> position; // Un array de Coordonnée (une pour chaque point du bateau)
+    private boolean inFlotte; // False par default, passera à true lorsque le joueur place le bateau sur la grille
 
     // Constructeur
     public Navire(int id, TypeNavire type, int longueur)
