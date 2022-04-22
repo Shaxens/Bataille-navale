@@ -17,6 +17,41 @@ Application logiciel permettant de jouer à la bataille navale à l'aide d'une i
 
 <details><summary><h2>Fonctionnement</h2></summary>
   
+  <h3>Avant de jouer</h3>
+  <p>Tout d'abord chaque joueur choisit un nom.</p>
+  
+  ```java
+  Veuillez entrer le nom du joueur 1 : Goldorak
+  Le nom du joueur 1 est Goldorak.
+  ```
+  
+  <p>Une fois les positions des navires choisis, l'un après l'autre, les joueurs pourront choisir les cases où ils veulent tirer.</p>
+  
+  ```java
+  -- Goldorak --
+  En quelle position voulez-vous placer le Porte-Avions (A-J)(1-10) ? C5
+  Votre Porte-Avions se trouve en C5.
+  
+  En quelle position voulez-vous placer le Croiseur (A-J)(1-10) ?
+  ```
+  
+  <br>
+  
+  <h3>Comment tirer sur une position</h3>
+  <p>Vous devriez voir cette ligne :</p>
+  
+  ```java
+  En quel position souhaitez-vous tirer ?
+  ```
+  
+  <p>Vous pourrez y répondre de cette façon : </p>
+  
+  ```java
+  En quel position souhaitez-vous tirer ? C10
+  ```
+  
+  <br>
+  <h3>Score</h3>
   <p>Le score des joueurs sera calculé en fonction des bateaux restants et de leurs points de vie.</p>
   
 
@@ -38,3 +73,11 @@ Application logiciel permettant de jouer à la bataille navale à l'aide d'une i
 ```
   
 </details>
+
+
+<details><summary><h2>Plateau de la bataille navale</h2></summary>
+  <p align="center">  
+    <img src="/img/github/bataille-navale.jpg">
+  </p>
+</details>
+  
