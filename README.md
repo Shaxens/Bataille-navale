@@ -1,5 +1,8 @@
 # Bataille navale
-Made by NavFlex
+
+![Logo NavFlex](/img/github/logo.png "NavFlex")
+
+***Made by NavFlex***
 
 Application logiciel permettant de jouer à la bataille navale à l'aide d'une invite de commande.
 
