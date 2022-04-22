@@ -22,3 +22,19 @@ Application logiciel permettant de jouer à la bataille navale à l'aide d'une i
 
 
 </details>  
+
+
+<details><summary><h2>Diagramme</h2></summary>
+  
+  ```mermaid
+    graph TD;
+    Tour-->Joueur;
+    Joueur-->Flotte;
+    Score-->Joueur;
+    Score-->Flotte;
+    Flotte-->Navire;
+    Navire-->Coordonnées;
+    TypeNavire-->Navire;
+```
+  
+</details>
