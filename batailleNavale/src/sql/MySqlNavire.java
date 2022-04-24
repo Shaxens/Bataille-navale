@@ -49,4 +49,27 @@ public class MySqlNavire implements DAO<Navire>
         return null;
     }
 
+    public Navire getById(int id)
+    {
+        try {
+            Connection laConnexion = creeConnexion();
+            PreparedStatement requete = laConnexion.prepareStatement("SELECT * FROM NAVIRE");
+            ResultSet resultat = requete.executeQuery();
+
+            while (resultat.next()) {
+                if (resultat.getInt("id") == id)
+                {
+                    int idNavire = resultat.getInt("id");
+                    TypeNavire type = TypeNavire.valueOf(resultat.getString("type"));
+                    int longueur = resultat.getInt("longueur");
+
+                    return new Navire(idNavire, type, longueur);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }

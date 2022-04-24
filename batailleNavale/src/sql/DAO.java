@@ -4,5 +4,6 @@ import java.util.ArrayList;
 
 public interface DAO<T>
 {
-    abstract ArrayList<T> getAll();
+    ArrayList<T> getAll();
+    T getById(int id);
 }
