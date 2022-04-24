@@ -1,7 +1,5 @@
 package gameplay;
 
-import gameplay.Coordonnee;
-
 import java.util.ArrayList;
 
 public class Navire
