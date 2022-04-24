@@ -5,7 +5,7 @@
       <driver-ref>mysql.8</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://devbdd.iutmetz.univ-lorraine.fr:3306/ouy16u_batailleNavale</jdbc-url>
+      <jdbc-url>jdbc:mysql://devbdd.iutmetz.univ-lorraine.fr:3306/oury16u_batailleNavale</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>
