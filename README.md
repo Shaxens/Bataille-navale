@@ -1,4 +1,4 @@
-# Bataille navale [![java version](https://img.shields.io/badge/Java-17-success)](https://img.shields.io/badge/Java-17-success) [![prerelease version](https://img.shields.io/badge/Pre--release-v0.0.1-orange)](https://img.shields.io/badge/Pre--release-v0.0.1-orange) [![progress status](https://img.shields.io/badge/-In%20progress-informational)](https://img.shields.io/badge/-In%20progress-informational)
+# Bataille navale [![java version](https://img.shields.io/badge/Java-18-success)](https://img.shields.io/badge/Java-18-success) [![prerelease version](https://img.shields.io/badge/Pre--release-v0.0.1-orange)](https://img.shields.io/badge/Pre--release-v0.0.1-orange) [![progress status](https://img.shields.io/badge/-In%20progress-informational)](https://img.shields.io/badge/-In%20progress-informational)
 
 ![Logo NavFlex](/img/github/logo.png "NavFlex")
 
