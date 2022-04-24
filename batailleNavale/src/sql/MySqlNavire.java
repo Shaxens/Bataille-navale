@@ -28,20 +28,25 @@ public class MySqlNavire implements DAO<Navire>
 
     // METHODES
     @Override
-    public void getAll() {
+    public ArrayList<Navire> getAll() {
         try {
             Connection laConnexion = creeConnexion();
             PreparedStatement requete = laConnexion.prepareStatement("SELECT * FROM NAVIRE");
             ResultSet resultat = requete.executeQuery();
+            ArrayList<Navire> flotte = new ArrayList<>();
 
             while (resultat.next()) {
-                System.out.println("id : " + resultat.getInt("id"));
-                System.out.println("type : " + resultat.getString("type"));
-                System.out.println("longueur : " + resultat.getString("longueur"));
+                int id = resultat.getInt("id");
+                TypeNavire type = TypeNavire.valueOf(resultat.getString("type"));
+                int longueur = resultat.getInt("longueur");
+
+                flotte.add(new Navire(id, type, longueur));
             }
+            return flotte;
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return null;
     }
 
 }
