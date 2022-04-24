@@ -19,7 +19,9 @@ public class MySqlNavire implements DAO<Navire>
         this.connexion = Connexion.getInstance();
     }
 
-    public static MySqlNavire getInstance() {
+    // INSTANCIATION de MySqlNavire  ---  On utilisera MySqlNavire.getInstance().uneMethode() à chaque fois que l'on veut l'utiliser
+    public static MySqlNavire getInstance() // Cette Methode permet d'obtenir et d'utiliser un singleton d'instance MySqlNavire
+    {
         if (instance == null) {
             instance = new MySqlNavire();
         }
@@ -71,5 +73,4 @@ public class MySqlNavire implements DAO<Navire>
         }
         return null;
     }
-
 }
