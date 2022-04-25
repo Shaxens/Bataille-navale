@@ -1,6 +1,7 @@
-package gameplay;
+package fr.navflex.gameplay.navire;
 
-import sql.MySqlNavire;
+import fr.navflex.gameplay.navire.Navire;
+import fr.navflex.sql.MySqlNavire;
 
 import java.util.ArrayList;
 

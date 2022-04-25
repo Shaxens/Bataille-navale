@@ -1,6 +1,4 @@
-package gameplay;
-
-import java.util.ArrayList;
+package fr.navflex.gameplay.grille;
 
 public class Grille
 {

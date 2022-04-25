@@ -1,4 +1,4 @@
-package gameplay;
+package fr.navflex.gameplay.navire;
 
 public enum TypeNavire
 {

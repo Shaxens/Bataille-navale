@@ -1,4 +1,4 @@
-package sql;
+package fr.navflex.sql;
 
 import java.util.ArrayList;
 

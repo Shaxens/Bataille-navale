@@ -1,10 +1,13 @@
-package sql;
+package fr.navflex.sql;
 
 import java.sql.*;
-import gameplay.*;
+
+import fr.navflex.gameplay.navire.Navire;
+import fr.navflex.gameplay.navire.TypeNavire;
+
 import java.util.ArrayList;
 
-import static sql.Connexion.creeConnexion;
+import static fr.navflex.sql.Connexion.creeConnexion;
 
 
 public class MySqlNavire implements DAO<Navire>

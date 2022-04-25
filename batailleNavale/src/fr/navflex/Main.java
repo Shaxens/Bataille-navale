@@ -1,7 +1,6 @@
-import gameplay.*;
-import sql.*;
+package fr.navflex;
 
-import java.util.ArrayList;
+import fr.navflex.gameplay.navire.Flotte;
 
 public class Main {
     public static void main(String[] args)

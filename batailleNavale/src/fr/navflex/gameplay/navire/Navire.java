@@ -1,4 +1,6 @@
-package gameplay;
+package fr.navflex.gameplay.navire;
+
+import fr.navflex.gameplay.grille.Coordonnee;
 
 import java.util.ArrayList;
 
