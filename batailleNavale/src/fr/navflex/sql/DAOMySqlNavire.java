@@ -2,7 +2,7 @@ package fr.navflex.sql;
 
 import java.util.ArrayList;
 
-public interface DAO<T>
+public interface DAOMySqlNavire<T>
 {
     ArrayList<T> getAll();
     T getById(int id);
