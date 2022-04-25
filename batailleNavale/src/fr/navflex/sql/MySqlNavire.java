@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import static fr.navflex.sql.Connexion.creeConnexion;
 
 
-public class MySqlNavire implements DAO<Navire>
+public class MySqlNavire implements DAOMySqlNavire<Navire>
 {
     // ATTRIBUTS
     private Connexion connexion;
