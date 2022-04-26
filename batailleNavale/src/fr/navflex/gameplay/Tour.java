@@ -17,7 +17,7 @@ public class Tour {
 
     // Méthodes
     public void changerTour(int tour) {
-        
+
     }
 
 }
