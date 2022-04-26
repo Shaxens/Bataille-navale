@@ -1,13 +1,16 @@
-package sql;
+package fr.navflex.sql;
 
 import java.sql.*;
-import gameplay.*;
+
+import fr.navflex.gameplay.navire.Navire;
+import fr.navflex.gameplay.navire.TypeNavire;
+
 import java.util.ArrayList;
 
-import static sql.Connexion.creeConnexion;
+import static fr.navflex.sql.Connexion.creeConnexion;
 
 
-public class MySqlNavire implements DAO<Navire>
+public class MySqlNavire implements DAOMySqlNavire<Navire>
 {
     // ATTRIBUTS
     private Connexion connexion;
@@ -19,7 +22,9 @@ public class MySqlNavire implements DAO<Navire>
         this.connexion = Connexion.getInstance();
     }
 
-    public static MySqlNavire getInstance() {
+    // INSTANCIATION de MySqlNavire  ---  On utilisera MySqlNavire.getInstance().uneMethode() à chaque fois que l'on veut l'utiliser
+    public static MySqlNavire getInstance() // Cette Methode permet d'obtenir et d'utiliser un singleton d'instance MySqlNavire
+    {
         if (instance == null) {
             instance = new MySqlNavire();
         }
@@ -71,5 +76,4 @@ public class MySqlNavire implements DAO<Navire>
         }
         return null;
     }
-
 }

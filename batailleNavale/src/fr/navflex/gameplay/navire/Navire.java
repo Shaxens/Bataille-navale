@@ -1,4 +1,6 @@
-package gameplay;
+package fr.navflex.gameplay.navire;
+
+import fr.navflex.gameplay.grille.Coordonnee;
 
 import java.util.ArrayList;
 
@@ -9,7 +11,7 @@ public class Navire
     private TypeNavire type; // type du navire qui définira sa longueur (lien fait dans la bdd)
     private int longueur; // La longueur correspond au nombre de point du bateau à toucher
     private ArrayList<Coordonnee> position; // Un array de Coordonnée (une pour chaque point du bateau)
-    private boolean inFlotte; // False par default, passera à true lorsque le joueur place le bateau sur la grille
+    private boolean inGrid; // False par default, passera à true lorsque le joueur place le bateau sur la grille
 
     // Constructeur
     public Navire(int id, TypeNavire type, int longueur)
@@ -18,24 +20,24 @@ public class Navire
         this.setType(type);
         this.setLongueur(longueur);
         this.position = new ArrayList<>();
-        this.inFlotte = false;
+        this.inGrid = false;
     }
 
     // GETTERS
     public int getId() {
-        return id;
+        return this.id;
     }
     public TypeNavire getType() {
-        return type;
+        return this.type;
     }
     public int getLongueur() {
-        return longueur;
+        return this.longueur;
     }
     public ArrayList<Coordonnee> getPosition() {
-        return position;
+        return this.position;
     }
-    public boolean isInFlotte() {
-        return inFlotte;
+    public boolean inGrid() {
+        return this.inGrid;
     }
 
     // SETTERS
@@ -55,7 +57,20 @@ public class Navire
         this.position = position;
     }
 
-    public void setInFlotte(boolean inFlotte) {
-        this.inFlotte = inFlotte;
+    public void setInFlotte(boolean inGrid) {
+        this.inGrid = inGrid;
+    }
+
+    // METHODES
+    @Override
+    public String toString() {
+        if (this.inGrid)
+        {
+            return "Navire " + id + " : " + type + " de longueur " + longueur + " en position " + position;
+        }
+        else
+        {
+            return "Navire " + id + " : " + type + " de longueur " + longueur;
+        }
     }
 }

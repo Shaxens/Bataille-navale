@@ -1,11 +1,10 @@
-package sql;
+package fr.navflex.sql;
 import java.sql.*;
 
 public class Connexion
 {
     // ATTRIBUT
     private static Connexion instance;
-    private Connection mySqlConnection;
 
     // Constructeur
     private Connexion()
