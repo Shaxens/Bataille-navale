@@ -3,11 +3,11 @@ package fr.navflex.gameplay.grille;
 public class Coordonnee
 {
     // ATTRIBUTS
-    private char positionX;
+    private int positionX;
     private int positionY;
 
     // CONSTRUCTEUR
-    public Coordonnee(char positionX, int postionY)
+    public Coordonnee(int positionX, int postionY)
     {
         this.setPositionX(positionX);
         this.setPositionY(postionY);
@@ -22,7 +22,7 @@ public class Coordonnee
     }
 
     // SETTERS
-    public void setPositionX(char positionX) {
+    public void setPositionX(int positionX) {
         this.positionX = positionX;
     }
     public void setPositionY(int positionY) { this.positionY = positionY; }
