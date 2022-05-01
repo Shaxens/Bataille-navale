@@ -1,15 +1,20 @@
 package fr.navflex;
 
+import fr.navflex.gameplay.grille.Coordonnee;
 import fr.navflex.gameplay.navire.Flotte;
-import fr.navflex.gameplay.navire.Navire;
+import fr.navflex.gameplay.navire.TypeNavire;
 import fr.navflex.joueur.Joueur;
-import fr.navflex.joueur.Score;
+
 
 public class Main {
-    public static void main(String[] args) throws Exception {
-        Joueur joueur = new Joueur(1, "LourdJesus", 10,10);
-        System.out.println(joueur.getFlotte());
-        System.out.println(joueur.getGrille().getGrille().length);
-        joueur.placerPorteAvion();
+    public static void main(String[] args) {
+        Flotte flotte = new Flotte(1);
+        flotte.addNavire(TypeNavire.PorteAvions);
+        flotte.addNavire(TypeNavire.PorteAvions);
+        flotte.addNavire(TypeNavire.Croiseur);
+        flotte.addNavire(TypeNavire.ContreTorpilleur);
+        flotte.addNavire(TypeNavire.ContreTorpilleur);
+        flotte.addNavire(TypeNavire.ContreTorpilleur);
+        flotte.addNavire(TypeNavire.Torpilleur);
     }
 }

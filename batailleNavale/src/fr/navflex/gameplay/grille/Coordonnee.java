@@ -1,5 +1,9 @@
 package fr.navflex.gameplay.grille;
 
+import fr.navflex.joueur.Joueur;
+
+import java.util.Scanner;
+
 public class Coordonnee
 {
     // ATTRIBUTS
@@ -15,10 +19,10 @@ public class Coordonnee
 
     // GETTERS
     public int getPositionX() {
-        return positionX;
+        return this.positionX;
     }
     public int getPositionY() {
-        return positionY;
+        return this.positionY;
     }
 
     // SETTERS
@@ -26,4 +30,32 @@ public class Coordonnee
         this.positionX = positionX;
     }
     public void setPositionY(int positionY) { this.positionY = positionY; }
+
+    // METHODES
+    public Coordonnee saisirCoordonnee()
+    {
+        Scanner scan = new Scanner(System.in);
+        int positionX = 0;
+        int positionY = 0;
+
+        System.out.println("Entrez la position X : ");
+        try {
+            positionX = scan.nextInt();
+        } catch (Exception e)
+        {
+            System.out.println("Erreur : " + e);
+        }
+
+        System.out.println("Entrez la position Y : ");
+        try {
+            positionY = scan.nextInt();
+        } catch (Exception e)
+        {
+            System.out.println("Erreur : " + e);
+        }
+
+        Coordonnee coordonnee = new Coordonnee(positionX,positionY);
+        System.out.println(coordonnee);
+        return coordonnee;
+    }
 }

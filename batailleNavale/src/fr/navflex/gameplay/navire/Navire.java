@@ -19,7 +19,7 @@ public class Navire
         this.setId(id);
         this.setType(type);
         this.setLongueur(longueur);
-        this.position = new ArrayList<>();
+        this.position = new ArrayList<Coordonnee>();
         this.inGrid = false;
     }
 
