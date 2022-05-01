@@ -11,6 +11,11 @@ public class Coordonnee
     private int positionY;
 
     // CONSTRUCTEUR
+    public  Coordonnee()
+    {
+
+    }
+
     public Coordonnee(int positionX, int postionY)
     {
         this.setPositionX(positionX);
@@ -32,7 +37,7 @@ public class Coordonnee
     public void setPositionY(int positionY) { this.positionY = positionY; }
 
     // METHODES
-    public Coordonnee saisirCoordonnee()
+    public boolean saisirCoordonnee()
     {
         Scanner scan = new Scanner(System.in);
         int positionX = 0;
@@ -44,6 +49,7 @@ public class Coordonnee
         } catch (Exception e)
         {
             System.out.println("Erreur : " + e);
+            return false;
         }
 
         System.out.println("Entrez la position Y : ");
@@ -52,10 +58,17 @@ public class Coordonnee
         } catch (Exception e)
         {
             System.out.println("Erreur : " + e);
+            return false;
         }
 
-        Coordonnee coordonnee = new Coordonnee(positionX,positionY);
-        System.out.println(coordonnee);
-        return coordonnee;
+        this.setPositionX(positionX);
+        this.setPositionY(positionY);
+        return true;
+    }
+
+
+    @Override
+    public String toString() {
+        return "[ " + positionX + ", " + positionY + "]";
     }
 }

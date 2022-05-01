@@ -71,7 +71,7 @@ public class Navire
     public String toString() {
         if (this.inGrid)
         {
-            return "Navire " + id + " : " + type + " de longueur " + longueur + " en position " + position;
+            return "Navire " + id + " : " + type + " ptsVie : " + pointsVie + " de longueur " + longueur + " en position " + position;
         }
         else
         {

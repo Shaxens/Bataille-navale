@@ -7,14 +7,10 @@ import fr.navflex.joueur.Joueur;
 
 
 public class Main {
-    public static void main(String[] args) {
-        Flotte flotte = new Flotte(1);
-        flotte.addNavire(1);
-        flotte.addNavire(2);
-        flotte.addNavire(3);
-        flotte.addNavire(4);
-        flotte.addNavire(5);
-        flotte.addNavire(5);
-        flotte.addNavire(1);
+    public static void main(String[] args) throws Exception {
+        Joueur joueur = new Joueur(1, "LourdJesus", 10, 10);
+        System.out.println("\nSaisissez la position du contre-torpilleur d'id 3 :");
+        joueur.saisirPositionDuNavire(3);
+        System.out.println(joueur.getFlotte().getNavirebyId(3));
     }
 }
