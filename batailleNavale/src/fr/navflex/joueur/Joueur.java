@@ -50,18 +50,16 @@ public class Joueur {
     {
         this.setId(id);
         this.setNom(nom);
-        this.setFlotte(new Flotte(this.getId()));
+        this.setFlotte(new Flotte(this.getId()));  // La Flotte du Joueur possède donc le meme ID que le Joueur
         this.setGrille(new Grille(ligne, colonne));
     }
 
     // METHODES
-    public void placerPorteAvion() {
-        Navire porteAvion = new Navire(1,TypeNavire.PorteAvions, 5);
-        int nbPointsAPlacer = porteAvion.getLongueur();
 
-        for (int i = 0; i < nbPointsAPlacer ; i++)
-        {
-            Coordonnee coordonnee = new Coordonnee(0,0).saisirCoordonnee();
-        }
+    // Methode qui permet d'enregistrer un Navire dans la Flotte du Joueur et de setUp sa Position
+    // Paramètre : int id ---> (id du Navire à enregistrer)
+    // Retour : Boolean (pour faciliter TEST UNITAIRES)
+    public void saisirPositionDuNavire() {
+        
     }
 }
