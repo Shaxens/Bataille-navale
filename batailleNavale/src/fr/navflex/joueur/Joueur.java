@@ -59,7 +59,7 @@ public class Joueur {
     // Methode qui permet d'enregistrer un Navire dans la Flotte du Joueur et de setUp sa Position
     // Paramètre : int id ---> (id du Navire à enregistrer)
     // Retour : Boolean (pour faciliter TEST UNITAIRES)
-    public void saisirPositionDuNavire()
+    public void saisirPositionDuNavire(int id)
     {
 
     }
