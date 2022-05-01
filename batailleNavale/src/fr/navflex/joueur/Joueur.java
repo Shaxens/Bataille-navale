@@ -56,6 +56,7 @@ public class Joueur {
     public void setNavire(Navire navire) {
         this.navire = navire;
     }
+
     // Constructeur
     public Joueur (int id,String nom, int ligne, int colonne) throws Exception
     {
@@ -69,7 +70,7 @@ public class Joueur {
     // Methode qui permet d'enregistrer un Navire dans la Flotte du Joueur et de setUp sa Position
     // Paramètre : int id ---> (id du Navire à enregistrer)
     // Retour : Boolean (pour faciliter TEST UNITAIRES)
-    public boolean saisirPositionDuNavire(Navire navire) {
+    /*public boolean saisirPositionDuNavire(Navire navire) {
         if (navire.setPosition(Coordonnee.saisirCoordonnee())){
             System.out.println("Votre navire se trouve en : ", navire.getPosition());
             return true;
@@ -78,5 +79,12 @@ public class Joueur {
             System.out.println("Vous avez entré : ", navire.getPosition());
             return false;
         }
+    }*/
+
+    @Override
+    public String toString() {
+        System.out.println("Voici donc votre nom pour cette partie : ");
+        System.out.println("Nom du joueur "+ this.getId() + " : " + this.getNom());
+        return "Nom du joueur "+ this.getId() + " : " + this.getNom();
     }
 }

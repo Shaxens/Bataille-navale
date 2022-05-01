@@ -86,9 +86,30 @@ public class Flotte {
         return true; // RETOUR BOOLEAN A UTILISER POUR TEST UNITAIRE
     }
 
-
-
-    // METHODES
+    public Navire getNavirebyId(int id) throws Exception
+    {
+        if (this.getFlotte().size() > 0 && id <= 5 )
+        {
+            for (Navire navire : this.getFlotte())
+            {
+                if (navire.getId() == id)
+                    return navire;
+            }
+        }
+        else if (this.getFlotte().size() > 0 && id > 5)
+        {
+            throw new Exception("Erreur : l'id(" + id + ") n'existe pas.");
+        }
+        else  if (this.getFlotte().size() == 0 && id <= 5)
+        {
+            throw new Exception("Erreur : la flotte " + this.getId() + " est vide.");
+        }
+        else  if (this.getFlotte().size() == 0 && id > 5)
+        {
+            throw new Exception("Erreur : la flotte " + this.getId() + " est vide et l'id(" + id + ") n'existe pas.");
+        }
+        return null;
+    }
 
     @Override
     public String toString() {
