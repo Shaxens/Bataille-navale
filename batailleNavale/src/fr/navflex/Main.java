@@ -9,12 +9,12 @@ import fr.navflex.joueur.Joueur;
 public class Main {
     public static void main(String[] args) {
         Flotte flotte = new Flotte(1);
-        flotte.addNavire(TypeNavire.PorteAvions);
-        flotte.addNavire(TypeNavire.PorteAvions);
-        flotte.addNavire(TypeNavire.Croiseur);
-        flotte.addNavire(TypeNavire.ContreTorpilleur);
-        flotte.addNavire(TypeNavire.ContreTorpilleur);
-        flotte.addNavire(TypeNavire.ContreTorpilleur);
-        flotte.addNavire(TypeNavire.Torpilleur);
+        flotte.addNavire(1);
+        flotte.addNavire(2);
+        flotte.addNavire(3);
+        flotte.addNavire(4);
+        flotte.addNavire(5);
+        flotte.addNavire(5);
+        flotte.addNavire(1);
     }
 }
