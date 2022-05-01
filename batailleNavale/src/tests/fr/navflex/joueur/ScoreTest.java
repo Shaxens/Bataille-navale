@@ -27,7 +27,7 @@ public class ScoreTest {
     // On test le score du navire créé
     @Test
     public void testCalculInvalide() throws Exception {
-        Assert.assertEquals(18.1, score.calculScoreNavire(navire));
+        Assert.assertEquals(18.1, score.calculScoreNavire(navire), 2);
         System.out.println("hello");
     }
 
