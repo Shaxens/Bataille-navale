@@ -32,14 +32,11 @@ public class JoueurTest {
         joueur.toString();
     }
 
-    @Test(expected = Exception.class)
+    @Test
     public void positionNavireCorrect() throws Exception {
-        try {
-            joueur = new Joueur(1, "Jesus", 0,18);
-        } catch (Exception e) {
-            Assert.assertEquals("La grille doit être au minimum de 20 cases", e.getMessage());
-            throw e;
-        }
+
+            joueur.saisirPositionDuNavire(1);
+
     }
 
     /*@Test

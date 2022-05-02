@@ -83,9 +83,6 @@ public class Joueur {
             System.out.println(e);
         }
 
-        navire.setPointsVie();
-        navire.setInGrille(true);
-
         return true;
     }
 
