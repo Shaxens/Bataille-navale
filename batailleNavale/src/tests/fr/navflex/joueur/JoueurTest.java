@@ -22,16 +22,18 @@ public class JoueurTest {
     @Before
     public void setUp() throws Exception {
         joueur = new Joueur(1, "Goldorak", 2, 20);
-        grille = new Grille(5, 18);
-        navire = new Navire(1);
-        flotte = new Flotte(1);
-        coordonnee = new Coordonnee();
-        flotte.addNavire(navire);
     }
 
     @Test
     public void string() throws Exception {
         joueur.toString();
+    }
+
+    @Test
+    public void testConstructeur()
+    {
+        // On test si la flotte du joueur se créé bien avec le meme id que lui dans le constructeur
+        Assert.assertEquals(joueur.getId(),joueur.getFlotte().getId());
     }
 
     /*@Test
