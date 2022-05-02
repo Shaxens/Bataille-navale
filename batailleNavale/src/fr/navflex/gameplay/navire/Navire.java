@@ -11,7 +11,7 @@ public class Navire
     private TypeNavire type; // type du navire qui définira sa longueur (lien fait dans la bdd)
     private int longueur; // La longueur correspond au nombre de point du bateau à toucher
     private ArrayList<Coordonnee> position; // Un array de Coordonnée (une pour chaque point du bateau)
-    private boolean inGrid; // False par default, passera à true lorsque le joueur place le bateau sur la grille
+    private boolean inGrille; // False par default, passera à true lorsque le joueur place le bateau sur la grille
     private int pointsVie;
 
     // Constructeur
@@ -21,7 +21,7 @@ public class Navire
         this.setType(type);
         this.setLongueur(longueur);
         this.position = new ArrayList<Coordonnee>();
-        this.inGrid = false;
+        this.inGrille = false;
         this.setPointsVie();
     }
 
@@ -38,8 +38,8 @@ public class Navire
     public ArrayList<Coordonnee> getPosition() {
         return this.position;
     }
-    public boolean getInGrid() {
-        return this.inGrid;
+    public boolean getInGrille() {
+        return this.inGrille;
     }
     public int getPointsVie() { return  this.pointsVie; }
 
@@ -60,8 +60,8 @@ public class Navire
         this.position = position;
     }
 
-    public void setInGrid(boolean inGrid) {
-        this.inGrid = inGrid;
+    public void setInGrille(boolean inGrille) {
+        this.inGrille = inGrille;
     }
 
     public void setPointsVie() { this.pointsVie = this.getPosition().size(); }
@@ -69,7 +69,7 @@ public class Navire
     // METHODES
     @Override
     public String toString() {
-        if (this.inGrid)
+        if (this.inGrille)
         {
             return "Navire " + id + " : " + type + " ptsVie : " + pointsVie + " de longueur " + longueur + " en position " + position;
         }
