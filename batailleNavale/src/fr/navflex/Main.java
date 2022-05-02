@@ -1,14 +1,17 @@
 package fr.navflex;
 
+import fr.navflex.gameplay.grille.Coordonnee;
 import fr.navflex.gameplay.navire.Flotte;
-import fr.navflex.gameplay.navire.Navire;
-import fr.navflex.joueur.Score;
+import fr.navflex.gameplay.navire.TypeNavire;
+import fr.navflex.joueur.Joueur;
 
-public class Main {
-    public static void main(String[] args)
+
+public class Main
+{
+    public static void main(String[] args) throws Exception
     {
-        Flotte flotte = new Flotte();
-        System.out.println(flotte);
+        Joueur joueur = new Joueur(1, "LourdJesus", 10, 10);
+        joueur.saisirPositionDuNavire(5);
 
     }
 }

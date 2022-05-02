@@ -5,24 +5,40 @@ import java.util.Scanner;
 public class Grille {
 	// ATTRIBUTS
 	private int[][] grille;
+	private  int axeX;
+	private  int axeY;
 
 	// CONSTRUCTEUR
-	public Grille(int ligne, int colonne) throws Exception {
-		this.setGrille(ligne, colonne);
+	public Grille(int axeX, int axeY) throws Exception {
+		this.setGrille(axeX, axeY);
+		this.setAxeX(axeX);
+		this.setAxeY(axeY);
 	}
 
 	// GETTER
 	public int[][] getGrille() {
-		return grille;
+		return this.grille;
 	}
+	public int getAxeX() { return this.axeX; }
+	public int getAxeY() { return this.axeY; }
 
 	// SETTER
-	public void setGrille(int ligne, int colonne) throws Exception {
-		if (ligne * colonne >= 20) {
-			this.grille = new int[ligne][colonne];
+	public void setGrille(int axeX, int axeY) throws Exception {
+		if (axeX * axeY >= 20) {
+			this.grille = new int[axeX][axeY];
 		} else {
 			throw new Exception("La grille doit être au minimum de 20 cases");
 		}
+	}
+
+	public void setAxeX(int axeX)
+	{
+		this.axeX = axeX;
+	}
+
+	public void setAxeY(int axeY)
+	{
+		this.axeY = axeY;
 	}
 
 	// METHODES

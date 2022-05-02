@@ -1,6 +1,7 @@
 package fr.navflex.gameplay.navire;
 
 import fr.navflex.gameplay.grille.Coordonnee;
+import fr.navflex.sql.MySqlNavire;
 
 import java.util.ArrayList;
 
@@ -11,7 +12,8 @@ public class Navire
     private TypeNavire type; // type du navire qui définira sa longueur (lien fait dans la bdd)
     private int longueur; // La longueur correspond au nombre de point du bateau à toucher
     private ArrayList<Coordonnee> position; // Un array de Coordonnée (une pour chaque point du bateau)
-    private boolean inGrid; // False par default, passera à true lorsque le joueur place le bateau sur la grille
+    private boolean inGrille; // False par default, passera à true lorsque le joueur place le bateau sur la grille
+    private int pointsVie;
 
     // Constructeur
     public Navire(int id, TypeNavire type, int longueur)
@@ -19,8 +21,26 @@ public class Navire
         this.setId(id);
         this.setType(type);
         this.setLongueur(longueur);
-        this.position = new ArrayList<>();
-        this.inGrid = false;
+        this.position = new ArrayList<Coordonnee>();
+        this.inGrille = false;
+        this.setPointsVie();
+    }
+
+    public Navire(int id)
+    {
+        ArrayList<Navire> allNavire = MySqlNavire.getInstance().getAll();
+        for (Navire navire : allNavire)
+        {
+            if (id == navire.getId())
+            {
+                this.setId(id);
+                this.setType(navire.getType());
+                this.setLongueur(navire.getLongueur());
+                this.position = new ArrayList<Coordonnee>();
+                this.inGrille = false;
+                this.setPointsVie();
+            }
+        }
     }
 
     // GETTERS
@@ -36,9 +56,10 @@ public class Navire
     public ArrayList<Coordonnee> getPosition() {
         return this.position;
     }
-    public boolean inGrid() {
-        return this.inGrid;
+    public boolean getInGrille() {
+        return this.inGrille;
     }
+    public int getPointsVie() { return  this.pointsVie; }
 
     // SETTERS
     public void setId(int id) {
@@ -57,16 +78,24 @@ public class Navire
         this.position = position;
     }
 
-    public void setInFlotte(boolean inGrid) {
-        this.inGrid = inGrid;
+    public void setInGrille(boolean inGrille) {
+        this.inGrille = inGrille;
     }
 
+    public void setPointsVie() { this.pointsVie = this.getPosition().size(); }
+
     // METHODES
+
+
+
+
+
+
     @Override
     public String toString() {
-        if (this.inGrid)
+        if (this.inGrille)
         {
-            return "Navire " + id + " : " + type + " de longueur " + longueur + " en position " + position;
+            return "Navire " + id + " : " + type + " ptsVie : " + pointsVie + " de longueur " + longueur + " en position " + position;
         }
         else
         {
