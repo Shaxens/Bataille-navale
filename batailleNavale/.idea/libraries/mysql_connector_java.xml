@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
+
 <component name="libraryTable">
   <library name="mysql.connector.java" type="repository">
     <properties maven-id="mysql:mysql-connector-java:8.0.27" />
@@ -10,21 +9,4 @@
     <JAVADOC />
     <SOURCES />
   </library>
-=======
-=======
->>>>>>> f8024ee3117175399833616393f06f924b9a7f0f
-<component name="libraryTable">
-  <library name="mysql.connector.java" type="repository">
-    <properties maven-id="mysql:mysql-connector-java:8.0.27" />
-    <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/mysql/mysql-connector-java/8.0.27/mysql-connector-java-8.0.27.jar!/" />
-      <root url="jar://$MAVEN_REPOSITORY$/com/google/protobuf/protobuf-java/3.11.4/protobuf-java-3.11.4.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
-<<<<<<< HEAD
->>>>>>> feebd0ab51a1b851b42e251fde6f2233773c06de
-=======
->>>>>>> f8024ee3117175399833616393f06f924b9a7f0f
 </component>
