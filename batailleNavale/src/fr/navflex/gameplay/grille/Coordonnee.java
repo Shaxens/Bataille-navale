@@ -1,7 +1,9 @@
 package fr.navflex.gameplay.grille;
 
+import fr.navflex.gameplay.navire.Navire;
 import fr.navflex.joueur.Joueur;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Coordonnee
@@ -37,8 +39,10 @@ public class Coordonnee
     public void setPositionY(int positionY) { this.positionY = positionY; }
 
     // METHODES
-    public boolean saisirCoordonnee()
+    public Coordonnee saisirCoordonnee()
     {
+        Coordonnee coordonnee = new Coordonnee();
+
         Scanner scan = new Scanner(System.in);
         int positionX = 0;
         int positionY = 0;
@@ -49,7 +53,6 @@ public class Coordonnee
         } catch (Exception e)
         {
             System.out.println("Erreur : " + e);
-            return false;
         }
 
         System.out.println("Entrez la position Y : ");
@@ -58,13 +61,39 @@ public class Coordonnee
         } catch (Exception e)
         {
             System.out.println("Erreur : " + e);
-            return false;
         }
 
-        this.setPositionX(positionX);
-        this.setPositionY(positionY);
+        coordonnee.setPositionX(positionX);
+        coordonnee.setPositionY(positionY);
+
+        return coordonnee;
+    }
+
+    public boolean estValideParTypeNavire(Navire navire) throws Exception
+    {
+        if (navire.getPosition().size() > 0)
+        {
+            for (int i = 1; i < navire.getLongueur(); i++)
+            {
+                Coordonnee coordonneePrecedente = navire.getPosition().get(i-1);
+                int xSuivant = this.getPositionX();
+                int ySuivant = this.getPositionY();
+                int xPrecedent = coordonneePrecedente.getPositionX();
+                int yPrecedent = coordonneePrecedente.getPositionY();
+
+                if (xSuivant == xPrecedent && ySuivant == yPrecedent)
+                {
+                    throw new Exception("Erreur : Un des points du bateau est deja en coordonnee : " + this);
+                }
+                if (xSuivant - xPrecedent > 1)
+                {
+                    throw new Exception("Erreur : La ");
+                }
+            }
+        }
         return true;
     }
+
 
 
     @Override

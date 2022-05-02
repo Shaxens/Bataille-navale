@@ -67,27 +67,21 @@ public class Joueur {
     }
 
     // METHODES
-    // Methode qui permet d'enregistrer un Navire dans la Flotte du Joueur et de setUp sa Position
-    // Paramètre : int id ---> (id du Navire à enregistrer)
-    // Retour : Boolean (pour faciliter TEST UNITAIRES)
-    public boolean saisirPositionDuNavire(int id) throws Exception {
-        if (!this.getFlotte().addNavire(id)) // Si cette condition est fausse c'est que l'id du navire saisi est impossible a ajouter dans la flotte du joueur
+    public boolean saisirPositionDuNavire(int id)
+    {
+        try
         {
-            return false;
+            this.getFlotte().ajoutPossibleById(id);
+            Navire navire = new Navire(id);
+            System.out.println("Veuillez saisir les coordonnee du navire " + navire.getId() + " : " + navire.getType());
+            navire.setPointsVie();
+            navire.setInGrid(true);
+            this.getFlotte().addNavire(navire);
         }
-        Navire navire = this.getFlotte().getNavirebyId(id);
-        for (int i = 0; i < navire.getLongueur(); i++) {
-            Coordonnee coordonnee = new Coordonnee();
-            try {
-                coordonnee.saisirCoordonnee();
-            } catch (Exception e) {
-                System.out.println("Erreur : " + e);
-                return false;
-            }
-            navire.getPosition().add(coordonnee);
+        catch (Exception e)
+        {
+            System.out.println(e);
         }
-        navire.setPointsVie();
-        navire.setInGrid(true);
         return true;
     }
 

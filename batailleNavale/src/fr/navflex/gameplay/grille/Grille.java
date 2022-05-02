@@ -19,6 +19,8 @@ public class Grille {
 	public int[][] getGrille() {
 		return this.grille;
 	}
+	public int getAxeX() { return this.axeX; }
+	public int getAxeY() { return this.axeY; }
 
 	// SETTER
 	public void setGrille(int axeX, int axeY) throws Exception {

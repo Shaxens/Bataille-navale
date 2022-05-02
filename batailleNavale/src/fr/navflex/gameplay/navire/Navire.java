@@ -1,6 +1,7 @@
 package fr.navflex.gameplay.navire;
 
 import fr.navflex.gameplay.grille.Coordonnee;
+import fr.navflex.sql.MySqlNavire;
 
 import java.util.ArrayList;
 
@@ -23,6 +24,23 @@ public class Navire
         this.position = new ArrayList<Coordonnee>();
         this.inGrid = false;
         this.setPointsVie();
+    }
+
+    public Navire(int id)
+    {
+        ArrayList<Navire> allNavire = MySqlNavire.getInstance().getAll();
+        for (Navire navire : allNavire)
+        {
+            if (id == navire.getId())
+            {
+                this.setId(id);
+                this.setType(navire.getType());
+                this.setLongueur(navire.getLongueur());
+                this.position = new ArrayList<Coordonnee>();
+                this.inGrid = false;
+                this.setPointsVie();
+            }
+        }
     }
 
     // GETTERS
@@ -67,6 +85,12 @@ public class Navire
     public void setPointsVie() { this.pointsVie = this.getPosition().size(); }
 
     // METHODES
+
+
+
+
+
+
     @Override
     public String toString() {
         if (this.inGrid)
