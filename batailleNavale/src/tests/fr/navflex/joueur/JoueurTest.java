@@ -6,6 +6,7 @@ import fr.navflex.gameplay.navire.Flotte;
 import fr.navflex.gameplay.navire.Navire;
 import fr.navflex.gameplay.navire.TypeNavire;
 import fr.navflex.joueur.Joueur;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -22,9 +23,10 @@ public class JoueurTest {
     public void setUp() throws Exception {
         joueur = new Joueur(1, "Goldorak", 2, 20);
         grille = new Grille(5, 18);
-        navire = new Navire(1, TypeNavire.PorteAvions, 5);
+        navire = new Navire(1);
         flotte = new Flotte(1);
         coordonnee = new Coordonnee();
+        flotte.addNavire(navire);
     }
 
     @Test
@@ -32,12 +34,10 @@ public class JoueurTest {
         joueur.toString();
     }
 
-    @Test
+    /*@Test
     public void positionNavireCorrect() throws Exception {
-
-            joueur.saisirPositionDuNavire(1);
-
-    }
+        joueur.saisirPositionDuNavire(navire.getId());
+    }*/
 
     /*@Test
     public void positionNavireIncorrect() throws Exception {
