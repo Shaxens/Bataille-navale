@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> f8024ee3117175399833616393f06f924b9a7f0f
 <component name="libraryTable">
   <library name="mysql.connector.java" type="repository">
     <properties maven-id="mysql:mysql-connector-java:8.0.27" />
@@ -12,8 +8,4 @@
     <JAVADOC />
     <SOURCES />
   </library>
-<<<<<<< HEAD
-
-=======
->>>>>>> f8024ee3117175399833616393f06f924b9a7f0f
 </component>

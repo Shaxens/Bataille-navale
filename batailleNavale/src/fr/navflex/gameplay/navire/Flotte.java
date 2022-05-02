@@ -39,7 +39,11 @@ public class Flotte {
 
     public boolean ajoutPossibleById(int id) throws Exception
     {
-        if (this.getListeNavire().size() > 0) // Si la flotte possède déjà des navires on verifie ces conditions
+        if (id < 1 || id > 5)
+        {
+            throw new Exception("Erreur : l'id saisie est invalide");
+        }
+        else if (this.getListeNavire().size() > 0) // Si la flotte possède déjà des navires on verifie ces conditions
         {
             for (Navire navireDejaPresent : this.getListeNavire())
             {
@@ -65,6 +69,7 @@ public class Flotte {
         catch (Exception e)
         {
             System.out.println(e);
+            return false;
         }
         System.out.println("Ajout de : " + navire + " effectue avec succes.");
         return true;
@@ -80,8 +85,10 @@ public class Flotte {
                 if (navire.getId() == id)
                     return navire;
             }
+            throw new Exception("Erreur : le navire " + id + "n est pas dans la flotte " + this.getId());
+
         }
-        else if (this.getListeNavire().size() > 0 && id > 5)
+        else if (this.getListeNavire().size() > 0 && (id > 5 || id <1) )
         {
             throw new Exception("Erreur : l'id(" + id + ") n'existe pas.");
         }
@@ -89,7 +96,7 @@ public class Flotte {
         {
             throw new Exception("Erreur : la flotte " + this.getId() + " est vide.");
         }
-        else  if (this.getListeNavire().size() == 0 && id > 5)
+        else  if (this.getListeNavire().size() == 0 && (id > 5 || id <1))
         {
             throw new Exception("Erreur : la flotte " + this.getId() + " est vide et l'id(" + id + ") n'existe pas.");
         }

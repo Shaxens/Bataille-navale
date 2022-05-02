@@ -69,7 +69,7 @@ public class Coordonnee
         return coordonnee;
     }
 
-    public boolean estValideParTypeNavire(Navire navire) throws Exception
+    public boolean estValideParTypeNavire(Navire navire) throws Exception // En cours de dev
     {
         if (navire.getPosition().size() > 0)
         {
