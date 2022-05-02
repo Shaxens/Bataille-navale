@@ -75,20 +75,24 @@ public class Joueur {
             Navire navire = new Navire(id);
             System.out.println("Veuillez saisir les coordonnee du navire " + navire.getId() + " : " + navire.getType());
             navire.setPointsVie();
-            navire.setInGrid(true);
+            navire.setInGrille(true);
             this.getFlotte().addNavire(navire);
         }
         catch (Exception e)
         {
             System.out.println(e);
         }
+
+        navire.setPointsVie();
+        navire.setInGrille(true);
+
         return true;
     }
 
     @Override
     public String toString() {
         System.out.println("Voici donc votre nom pour cette partie : ");
-        System.out.println("Nom du joueur "+ this.getId() + " : " + this.getNom());
-        return "Nom du joueur "+ this.getId() + " : " + this.getNom();
+        System.out.println("Le nom du joueur " + this.getId() + " est " + this.getNom());
+        return "Le nom du joueur "+ this.getId() + " est " + this.getNom();
     }
 }
