@@ -31,7 +31,7 @@ public class Grille
     }
 
     // METHODES
-    public void saisieTailleGrille()
+    /*public void saisieTailleGrille()
     {
         System.out.print("Entrez le nombre de lignes : ");
         Scanner scanner = new Scanner(System.in);
@@ -50,6 +50,6 @@ public class Grille
             System.out.println("La saisie doit être un entier");
         }
         this.setGrille(scanner, scannerC); // A voir
-    }
-    }
+    }*/
+
 }
