@@ -1,3 +1,4 @@
+
 <component name="libraryTable">
   <library name="mysql.connector.java" type="repository">
     <properties maven-id="mysql:mysql-connector-java:8.0.27" />

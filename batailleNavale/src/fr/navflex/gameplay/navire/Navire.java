@@ -82,7 +82,7 @@ public class Navire
         this.inGrille = inGrille;
     }
 
-    public void setPointsVie() { this.pointsVie = this.getPosition().size(); }
+    public void setPointsVie() {this.pointsVie = this.getPosition().size();}
 
     // METHODES
 

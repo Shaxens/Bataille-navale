@@ -67,13 +67,19 @@ public class Joueur {
     }
 
     // METHODES
-    public boolean saisirPositionDuNavire(int id)
+    public boolean saisirPositionDuNavire(int id) // Dev en cours
     {
         try
         {
             this.getFlotte().ajoutPossibleById(id);
             Navire navire = new Navire(id);
             System.out.println("Veuillez saisir les coordonnee du navire " + navire.getId() + " : " + navire.getType());
+            ArrayList<Coordonnee> listCoordonnee = new ArrayList<>();
+            for (int i = 0; i < navire.getLongueur(); i++)
+            {
+                listCoordonnee.add(new Coordonnee().saisirCoordonnee());
+            }
+            navire.setPosition(listCoordonnee);
             navire.setPointsVie();
             navire.setInGrille(true);
             this.getFlotte().addNavire(navire);
@@ -82,7 +88,6 @@ public class Joueur {
         {
             System.out.println(e);
         }
-
         return true;
     }
 
