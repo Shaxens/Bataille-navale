@@ -29,5 +29,9 @@ public class GrilleTest {
 		grille.setGrille(3, 8);
 		Assert.assertNotNull(grille.getGrille());
 	}
-
+	@Test
+	public void testsetGrilleIsEmpty() throws Exception {
+		grille.setGrille(3, 8);
+		Assert.assertIsnotEmpty
+	}
 }
