@@ -1,8 +1,7 @@
-package main.java.fr.navflex.gameplay.grille;
+package fr.navflex.modele.grille;
 
-import main.java.fr.navflex.gameplay.navire.Navire;
+import fr.navflex.modele.navire.Navire;
 
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Coordonnee

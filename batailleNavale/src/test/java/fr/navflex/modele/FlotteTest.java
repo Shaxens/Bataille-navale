@@ -1,9 +1,9 @@
-package test.java.fr.navflex.gameplay.navire;
+package fr.navflex.modele;
 
 
-import main.java.fr.navflex.gameplay.navire.Flotte;
-import main.java.fr.navflex.gameplay.navire.Navire;
-import main.java.fr.navflex.gameplay.navire.TypeNavire;
+import fr.navflex.modele.navire.Flotte;
+import fr.navflex.modele.navire.Navire;
+import fr.navflex.modele.navire.TypeNavire;
 
 import org.junit.Assert;
 import org.junit.Before;

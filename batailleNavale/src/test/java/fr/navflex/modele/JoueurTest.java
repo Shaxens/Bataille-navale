@@ -1,10 +1,10 @@
-package test.java.fr.navflex.joueur;
+package fr.navflex.modele;
 
-import main.java.fr.navflex.gameplay.grille.Coordonnee;
-import main.java.fr.navflex.gameplay.grille.Grille;
-import main.java.fr.navflex.gameplay.navire.Flotte;
-import main.java.fr.navflex.gameplay.navire.Navire;
-import main.java.fr.navflex.joueur.Joueur;
+import fr.navflex.modele.grille.Coordonnee;
+import fr.navflex.modele.grille.Grille;
+import fr.navflex.modele.navire.Flotte;
+import fr.navflex.modele.navire.Navire;
+import fr.navflex.modele.joueur.Joueur;
 
 import org.junit.Assert;
 import org.junit.Before;

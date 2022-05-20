@@ -1,4 +1,4 @@
-package main.java.fr.navflex.gameplay;
+package fr.navflex.modele.partie;
 
 public class Tour {
 

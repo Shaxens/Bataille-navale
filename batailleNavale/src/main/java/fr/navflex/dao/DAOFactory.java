@@ -1,8 +1,8 @@
-  package main.java.fr.navflex.sql;
+  package fr.navflex.dao;
 
 import java.util.ArrayList;
 
-public interface DAOMySqlNavire<T>
+public interface DAOFactory<T>
 {
     ArrayList<T> getAll();
     T getById(int id);

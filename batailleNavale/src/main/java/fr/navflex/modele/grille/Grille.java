@@ -1,4 +1,4 @@
-package main.java.fr.navflex.gameplay.grille;
+package fr.navflex.modele.grille;
 
 import java.util.Scanner;
 

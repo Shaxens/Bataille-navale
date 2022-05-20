@@ -1,13 +1,11 @@
-package test.java.fr.navflex.gameplay.navire;
+package fr.navflex.modele;
 
-import main.java.fr.navflex.gameplay.grille.Coordonnee;
-import main.java.fr.navflex.gameplay.navire.Navire;
-import main.java.fr.navflex.gameplay.navire.TypeNavire;
+import fr.navflex.modele.grille.Coordonnee;
+import fr.navflex.modele.navire.Navire;
+import fr.navflex.modele.navire.TypeNavire;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.ArrayList;
 
 public class NavireTest {
     // Attribut

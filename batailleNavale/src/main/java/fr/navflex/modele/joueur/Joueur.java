@@ -1,12 +1,11 @@
-package main.java.fr.navflex.joueur;
+package fr.navflex.modele.joueur;
 
-import main.java.fr.navflex.gameplay.grille.Coordonnee;
-import main.java.fr.navflex.gameplay.grille.Grille;
-import main.java.fr.navflex.gameplay.navire.Flotte;
-import main.java.fr.navflex.gameplay.navire.Navire;
+import fr.navflex.modele.grille.Coordonnee;
+import fr.navflex.modele.grille.Grille;
+import fr.navflex.modele.navire.Flotte;
+import fr.navflex.modele.navire.Navire;
 
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class Joueur {
 

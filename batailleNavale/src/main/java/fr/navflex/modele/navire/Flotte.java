@@ -1,4 +1,4 @@
-package main.java.fr.navflex.gameplay.navire;
+package fr.navflex.modele.navire;
 
 import java.util.ArrayList;
 

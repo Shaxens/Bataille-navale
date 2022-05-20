@@ -1,6 +1,6 @@
-package main.java.fr.navflex;
+package fr.navflex;
 
-import main.java.fr.navflex.joueur.Joueur;
+import fr.navflex.modele.joueur.Joueur;
 
 
 public class Main

@@ -1,4 +1,4 @@
-package main.java.fr.navflex.sql;
+package fr.navflex.dao;
 import java.sql.*;
 
 public class Connexion

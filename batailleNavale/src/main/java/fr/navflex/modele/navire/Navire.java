@@ -1,7 +1,7 @@
-package main.java.fr.navflex.gameplay.navire;
+package fr.navflex.modele.navire;
 
-import main.java.fr.navflex.sql.MySqlNavire;
-import main.java.fr.navflex.gameplay.grille.Coordonnee;
+import fr.navflex.modele.grille.Coordonnee;
+import fr.navflex.dao.DAONavire;
 
 import java.util.ArrayList;
 
@@ -21,14 +21,14 @@ public class Navire
         this.setId(id);
         this.setType(type);
         this.setLongueur(longueur);
-        this.position = new ArrayList<Coordonnee>();
+        this.position = new ArrayList<>();
         this.inGrille = false;
         this.setPointsVie();
     }
 
     public Navire(int id)
     {
-        ArrayList<Navire> allNavire = MySqlNavire.getInstance().getAll();
+        ArrayList<Navire> allNavire = DAONavire.getInstance().getAll();
         for (Navire navire : allNavire)
         {
             if (id == navire.getId())
@@ -36,7 +36,7 @@ public class Navire
                 this.setId(id);
                 this.setType(navire.getType());
                 this.setLongueur(navire.getLongueur());
-                this.position = new ArrayList<Coordonnee>();
+                this.position = new ArrayList<>();
                 this.inGrille = false;
                 this.setPointsVie();
             }

@@ -1,14 +1,13 @@
-package test.java.fr.navflex.joueur;
+package fr.navflex.modele;
 
-import main.java.fr.navflex.gameplay.grille.Coordonnee;
+import fr.navflex.modele.grille.Coordonnee;
+import fr.navflex.modele.joueur.Score;
+import fr.navflex.modele.navire.Navire;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-
-import main.java.fr.navflex.joueur.Score;
-import main.java.fr.navflex.gameplay.navire.Navire;
 
 import java.util.ArrayList;
 

@@ -1,10 +1,9 @@
-package test.java.fr.navflex.gameplay.grille;
+package fr.navflex.modele;
 
+import fr.navflex.modele.grille.Grille;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
-import main.java.fr.navflex.gameplay.grille.Grille;
 
 public class GrilleTest {
 
