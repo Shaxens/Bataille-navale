@@ -7,7 +7,7 @@ public class Connexion
     private static Connexion instance;
 
     // Constructeur
-    private Connexion()
+    public Connexion()
     {
 
     }
