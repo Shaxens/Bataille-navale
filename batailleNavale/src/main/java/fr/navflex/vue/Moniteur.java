@@ -6,7 +6,7 @@ import fr.navflex.modele.navire.Navire;
 
 import java.util.ArrayList;
 
-public class PartieVue {
+public class Moniteur {
     public void afficherListeNavire(ArrayList<Navire> listeNavire)
     {
         for (Navire navire : listeNavire)
@@ -17,6 +17,7 @@ public class PartieVue {
 
     public void afficherGrille(Joueur joueur)
     {
+        // METHODES
         Grille grille = joueur.getGrille();
         StringBuilder colonne = new StringBuilder().append("   ");
         for (int i = 0; i < grille.getAxeY(); i++) {
@@ -34,5 +35,6 @@ public class PartieVue {
             }
             System.out.println(ligne);
         }
+        System.out.println(" [ Grille de " + joueur.getNom() + " ]");
     }
 }

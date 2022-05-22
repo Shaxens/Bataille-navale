@@ -1,7 +1,5 @@
 package fr.navflex.modele.grille;
 
-import java.util.Scanner;
-
 public class Grille {
 	// ATTRIBUTS
 	private int[][] grille;
@@ -53,21 +51,49 @@ public class Grille {
 		}
 	}
 
-	public boolean existeSurCetteGrille(int axeX, int axeY)
+	public boolean existeSurCetteGrille(Coordonnee coordonnee)
 	{
-		if (axeX < 0 || axeY < 0)
+		if (!(this.axeX >= coordonnee.getPositionX() && this.axeY >= coordonnee.getPositionY()))
 		{
-			return false;
+			throw new IllegalArgumentException("Erreur : La Coordonnee " + coordonnee + " n'est pas sur cette grille.");
 		}
-		else return this.axeX >= axeX && this.axeY >= axeY;
+		return true;
 	}
 
-	public void placerPointSurGrille(int axeX, int axeY) throws IllegalArgumentException
+	public int quelleValeurA(Coordonnee coordonnee) throws IllegalArgumentException
 	{
-		if (!this.existeSurCetteGrille(axeX, axeY))
+		try
 		{
-			throw new IllegalArgumentException("Ce point n'existe pas sur cette grille.");
+			if (existeSurCetteGrille(coordonnee))
+			{
+				return this.getGrille()[coordonnee.getPositionX()][coordonnee.getPositionY()];
+			}
+		} catch (IllegalArgumentException iae)
+		{
+			throw new IllegalArgumentException(iae.getMessage());
 		}
-		this.getGrille()[axeX][axeY] = 1;
+		return -1;
+	}
+
+	public boolean placerPointSurGrille(Coordonnee coordonnee, int valeur) throws IllegalArgumentException
+	{
+		try
+		{
+			if (existeSurCetteGrille(coordonnee))
+			{
+				this.getGrille()[coordonnee.getPositionX()][coordonnee.getPositionY()] = valeur;
+				return true;
+			}
+		} catch (IllegalArgumentException iae)
+		{
+			throw new IllegalArgumentException(iae.getMessage());
+		}
+		return false;
+	}
+
+	public boolean estPlacable(Coordonnee coordonnee, int longueurNavire)
+	{
+
+		return true;
 	}
 }

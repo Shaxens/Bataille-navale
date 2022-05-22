@@ -2,7 +2,7 @@ package fr.navflex.controleur;
 
 import fr.navflex.modele.joueur.Joueur;
 import fr.navflex.modele.navire.Navire;
-import fr.navflex.vue.PartieVue;
+import fr.navflex.vue.Moniteur;
 
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -11,13 +11,13 @@ import java.util.Scanner;
 public class JoueurControleur {
     // ATTRIBUTS
     private ArrayList<Joueur> listeJoueur;
-    private final PartieVue affichage;
+    private final Moniteur affichage;
 
     // CONSTRUCTEUR
     public JoueurControleur()
     {
         this.listeJoueur = new ArrayList<>();
-        this.affichage = new PartieVue();
+        this.affichage = new Moniteur();
     }
 
     // GETTERS
@@ -25,7 +25,7 @@ public class JoueurControleur {
         return listeJoueur;
     }
 
-    public PartieVue getAffichage() {
+    public Moniteur getAffichage() {
         return affichage;
     }
 

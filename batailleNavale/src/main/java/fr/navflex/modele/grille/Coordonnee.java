@@ -32,9 +32,19 @@ public class Coordonnee
 
     // SETTERS
     public void setPositionX(int positionX) {
+        if (positionX < 0)
+        {
+           throw new IllegalArgumentException("Erreur : X est inferieur a 0.");
+        }
         this.positionX = positionX;
     }
-    public void setPositionY(int positionY) { this.positionY = positionY; }
+    public void setPositionY(int positionY) {
+        if (positionY < 0)
+        {
+            throw new IllegalArgumentException("Erreur : Y est inferieur a 0.");
+        }
+        this.positionY = positionY;
+    }
 
     // METHODES
 
