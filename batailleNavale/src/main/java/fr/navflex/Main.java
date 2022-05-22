@@ -14,6 +14,7 @@ public class Main
         joueurControleur.addJoueur(joueur);
 
         joueurControleur.selectionnerNavireAPlacer(1);
+        joueurControleur.getAffichage().afficherGrille(joueurControleur.selectionJoueur(1));
 
     }
 }

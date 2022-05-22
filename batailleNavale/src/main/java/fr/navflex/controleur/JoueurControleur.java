@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-public class JoueurControleur extends PartieVue {
+public class JoueurControleur {
     // ATTRIBUTS
     private ArrayList<Joueur> listeJoueur;
     private final PartieVue affichage;
@@ -20,12 +20,20 @@ public class JoueurControleur extends PartieVue {
         this.affichage = new PartieVue();
     }
 
+    // GETTERS
+    public ArrayList<Joueur> getListeJoueur() {
+        return listeJoueur;
+    }
+
+    public PartieVue getAffichage() {
+        return affichage;
+    }
+
 
     //  METHODES
     public void addJoueur(Joueur joueur)
     {
         this.listeJoueur.add(joueur);
-
     }
 
     public Joueur selectionJoueur(int idJoueur)

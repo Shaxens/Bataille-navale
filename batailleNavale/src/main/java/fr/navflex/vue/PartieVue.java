@@ -1,6 +1,7 @@
 package fr.navflex.vue;
 
 import fr.navflex.modele.grille.Grille;
+import fr.navflex.modele.joueur.Joueur;
 import fr.navflex.modele.navire.Navire;
 
 import java.util.ArrayList;
@@ -14,8 +15,9 @@ public class PartieVue {
         }
     }
 
-    public void afficherGrille(Grille grille)
+    public void afficherGrille(Joueur joueur)
     {
+        Grille grille = joueur.getGrille();
         StringBuilder colonne = new StringBuilder().append("   ");
         for (int i = 0; i < grille.getAxeY(); i++) {
             colonne.append(i).append("__");
