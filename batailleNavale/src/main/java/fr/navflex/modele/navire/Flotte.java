@@ -1,15 +1,17 @@
 package fr.navflex.modele.navire;
 
+import fr.navflex.dao.DAONavire;
 import java.util.ArrayList;
 
 public class Flotte {
     // ATTRIBUTS
-    private ArrayList<Navire> listeNavire;
     private int id;
+    private ArrayList<Navire> listeNavire;
 
     // CONSTRUCTEUR
-    public Flotte(int id) {
-        this.setFlotte();
+    public Flotte(int id) // On lui passe en parametre le meme id que le joueur qui instancie la flotte
+    {
+        this.setListeNavire();
         this.setId(id);
     }
 
@@ -26,91 +28,48 @@ public class Flotte {
 
 
     // SETTER
-    private void setFlotte() {
-        this.listeNavire = new ArrayList<>();
-    }
-
-    private void setId(int id)
-    {
-        this.id = id;
+    private void setId(int id) {this.id = id;}
+    private void setListeNavire() {
+        this.listeNavire = DAONavire.getInstance().getAll();
     }
 
     // METHODES
 
-    public boolean ajoutPossibleById(int id) throws Exception
-    {
-        if (id < 1 || id > 5)
-        {
-            throw new Exception("Erreur : l'id saisie est invalide");
-        }
-        else if (this.getListeNavire().size() > 0) // Si la flotte possède déjà des navires on verifie ces conditions
-        {
-            for (Navire navireDejaPresent : this.getListeNavire())
-            {
-                if (id == navireDejaPresent.getId()) // Si l'id de navire correspond à l'id d'un Navire déja présent on renvoie un msg d'erreur
-                {
-                    throw new Exception("Erreur : le " + navireDejaPresent.getType() + " d'id(" + navireDejaPresent.getId() + ") fait deja parti de la flotte " + this.getId());
-                }
-            }
-        }
-        return true;
-    }
 
-    // Methode qui permet d'ajouter un Navire dans la Flotte sans avoir de doublon
-    // Paramètre : Navire navire ---> Le navire que l'on veut ajouter
-    // Retour : Boolean (pour faciliter TEST UNITAIRES)
-    public boolean addNavire(Navire navire) {
-        try
-        {
-            this.ajoutPossibleById(navire.getId());
-            this.getListeNavire().add(navire);
-
-        }
-        catch (Exception e)
-        {
-            System.out.println(e);
-            return false;
-        }
-        System.out.println("Ajout de : " + navire + " effectue avec succes.");
-        return true;
-    }
-
-
-    public Navire getNavirebyId(int id) throws Exception
+    public Navire getNavireById(int id, ArrayList<Navire> listeNavire) throws IllegalArgumentException
     {
         if (this.getListeNavire().size() > 0 && id <= 5 )
         {
-            for (Navire navire : this.getListeNavire())
+            for (Navire navire : listeNavire)
             {
                 if (navire.getId() == id)
                     return navire;
             }
-            throw new Exception("Erreur : le navire " + id + "n est pas dans la flotte " + this.getId());
-
         }
-        else if (this.getListeNavire().size() > 0 && (id > 5 || id <1) )
-        {
-            throw new Exception("Erreur : l'id(" + id + ") n'existe pas.");
-        }
-        else  if (this.getListeNavire().size() == 0 && id <= 5)
-        {
-            throw new Exception("Erreur : la flotte " + this.getId() + " est vide.");
-        }
-        else  if (this.getListeNavire().size() == 0 && (id > 5 || id <1))
-        {
-            throw new Exception("Erreur : la flotte " + this.getId() + " est vide et l'id(" + id + ") n'existe pas.");
-        }
-        return null;
+        throw new IllegalArgumentException("Erreur : le navire [" + id + "] n'est pas dans la liste.");
     }
+
+    public ArrayList<Navire> getListeNavireAPlacer()
+    {
+        ArrayList<Navire> listeNavireAPlacer = new ArrayList<>();
+        for (Navire navire : this.getListeNavire())
+        {
+            if(!navire.getInGrille())
+            {
+                listeNavireAPlacer.add(navire);
+            }
+        }
+        return listeNavireAPlacer;
+    }
+
 
     @Override
     public String toString() {
-        System.out.println("Flotte :");
         for (Navire navire : this.getListeNavire())
         {
             System.out.println(navire);
         }
-        return "Nombre de navire : " + this.getListeNavire().size();
+        return "";
     }
 }
 

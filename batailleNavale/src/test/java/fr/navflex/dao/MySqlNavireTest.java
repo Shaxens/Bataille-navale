@@ -1,4 +1,4 @@
-package test.java.fr.navflex.sql;
+package fr.navflex.dao;
 
 public class MySqlNavireTest {
 }

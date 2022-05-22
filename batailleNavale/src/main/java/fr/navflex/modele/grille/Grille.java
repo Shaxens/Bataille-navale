@@ -26,6 +26,7 @@ public class Grille {
 	public void setGrille(int axeX, int axeY) throws Exception {
 		if (axeX * axeY >= 20) {
 			this.grille = new int[axeX][axeY];
+			this.remplirTableau(0);
 		} else {
 			throw new Exception("La grille doit être au minimum de 20 cases");
 		}
@@ -42,22 +43,31 @@ public class Grille {
 	}
 
 	// METHODES
-	public void saisieTailleGrille() {
-		System.out.print("Entrez le nombre de lignes : ");
-		Scanner scanner = new Scanner(System.in);
-		if (scanner.hasNextInt()) {
-			System.out.println("Nombre de ligne : " + scanner);
-		} else {
-			System.out.println("La saisie doit être un entier");
+	private void remplirTableau(int valeur)
+	{
+		for (int i = 0; i < this.getAxeX(); i++)
+		{
+			for (int j = 0; j < this.getAxeY(); j++) {
+				this.getGrille()[i][j] = valeur;
+			}
 		}
-		System.out.print("Entrez le nombre de colonnes : ");
-		Scanner scannerC = new Scanner(System.in);
-		if (scanner.hasNextInt()) {
-			System.out.println("Nombre de colonne : " + scannerC);
-		} else {
-			System.out.println("La saisie doit être un entier");
+	}
+
+	public boolean existeSurCetteGrille(int axeX, int axeY)
+	{
+		if (axeX < 0 || axeY < 0)
+		{
+			return false;
 		}
-		// this.setGrille(scanner, scannerC); // A voir
-		// }
+		else return this.axeX >= axeX && this.axeY >= axeY;
+	}
+
+	public void placerPointSurGrille(int axeX, int axeY) throws IllegalArgumentException
+	{
+		if (!this.existeSurCetteGrille(axeX, axeY))
+		{
+			throw new IllegalArgumentException("Ce point n'existe pas sur cette grille.");
+		}
+		this.getGrille()[axeX][axeY] = 1;
 	}
 }

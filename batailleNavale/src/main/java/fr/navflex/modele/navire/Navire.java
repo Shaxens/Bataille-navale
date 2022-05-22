@@ -85,21 +85,15 @@ public class Navire
     public void setPointsVie() {this.pointsVie = this.getPosition().size();}
 
     // METHODES
-
-
-
-
-
-
     @Override
     public String toString() {
         if (this.inGrille)
         {
-            return "Navire " + id + " : " + type + " ptsVie : " + pointsVie + " de longueur " + longueur + " en position " + position;
+            return "Navire [" + id + "] : " + type + " | longueur " + longueur + " | position " + position + " | ptsVie : " + pointsVie;
         }
         else
         {
-            return "Navire " + id + " : " + type + " de longueur " + longueur;
+            return "Navire [" + id + "] : " + type + " | longueur " + longueur;
         }
     }
 }

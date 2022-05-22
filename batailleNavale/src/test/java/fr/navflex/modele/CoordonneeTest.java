@@ -15,22 +15,4 @@ public class CoordonneeTest {
     public void setUp() throws Exception {
         grille = new Grille(5,18);
     }
-
-    @Test
-    public void coordonneeCorrects() {
-        coordonnee = new Coordonnee(2,8);
-        coordonnee.saisirCoordonnee();
-    }
-
-
-    @Test
-    public void saisieCoordCorrect() throws Exception {
-        try {
-            coordonnee.saisirCoordonnee();
-        } catch (Exception e) {
-            Assert.assertEquals("Erreur : " + e, e.getMessage());
-            throw e;
-        }
-
-    }
 }

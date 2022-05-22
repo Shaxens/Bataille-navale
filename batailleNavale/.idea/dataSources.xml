@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="MySQL - ouy16u_batailleNavale@devbdd.iutmetz.univ-lorraine.fr" uuid="75986a43-4af6-4335-87d1-fb5141589ca6">
-      <driver-ref>mysql.8</driver-ref>
+    <data-source source="LOCAL" name="FlexNav" uuid="c3b07aa2-a4ca-41e2-9e29-1ffb3c625c1e">
+      <driver-ref>mariadb</driver-ref>
       <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://devbdd.iutmetz.univ-lorraine.fr:3306/oury16u_batailleNavale</jdbc-url>
+      <jdbc-driver>org.mariadb.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mariadb://devbdd.iutmetz.univ-lorraine.fr:3306/oury16u_batailleNavale</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

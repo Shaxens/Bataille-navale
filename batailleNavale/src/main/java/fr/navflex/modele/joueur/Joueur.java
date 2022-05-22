@@ -6,6 +6,8 @@ import fr.navflex.modele.navire.Flotte;
 import fr.navflex.modele.navire.Navire;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 public class Joueur {
 
@@ -64,34 +66,21 @@ public class Joueur {
     }
 
     // METHODES
+
+
     public boolean saisirPositionDuNavire(int id) // Dev en cours
     {
-        try
-        {
-            this.getFlotte().ajoutPossibleById(id);
-            Navire navire = new Navire(id);
-            System.out.println("Veuillez saisir les coordonnee du navire " + navire.getId() + " : " + navire.getType());
-            ArrayList<Coordonnee> listCoordonnee = new ArrayList<>();
-            for (int i = 0; i < navire.getLongueur(); i++)
-            {
-                listCoordonnee.add(new Coordonnee().saisirCoordonnee());
-            }
-            navire.setPosition(listCoordonnee);
-            navire.setPointsVie();
-            navire.setInGrille(true);
-            this.getFlotte().addNavire(navire);
-        }
-        catch (Exception e)
-        {
-            System.out.println(e);
-        }
         return true;
+    }
+
+    public void placerNavire(Navire navire, int axeX, int axeY)
+    {
+
     }
 
     @Override
     public String toString() {
-        System.out.println("Voici donc votre nom pour cette partie : ");
-        System.out.println("Le nom du joueur " + this.getId() + " est " + this.getNom());
-        return "Le nom du joueur "+ this.getId() + " est " + this.getNom();
+        System.out.println("Joueur [" + this.getId() + "] : " + this.getNom());
+        return "" + this.getFlotte();
     }
 }

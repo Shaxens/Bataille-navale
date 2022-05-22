@@ -20,7 +20,7 @@ public class DAONavire implements DAOFactory<Navire>
         this.connexion = Connexion.getInstance();
     }
 
-    // INSTANCIATION de MySqlNavire  ---  On utilisera MySqlNavire.getInstance().uneMethode() à chaque fois que l'on veut l'utiliser
+    // INSTANCIATION de MySqlNavire  ---  On utilisera DAONavire.getInstance().uneMethode() à chaque fois que l'on veut l'utiliser
     public static DAONavire getInstance() // Cette Methode permet d'obtenir et d'utiliser un singleton d'instance MySqlNavire
     {
         if (instance == null) {
