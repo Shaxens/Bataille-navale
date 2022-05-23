@@ -20,26 +20,38 @@ public class Moniteur {
         }
     }
 
+    public void afficherListeObjetSansId(ArrayList liste)
+    {
+        int compteur = 0;
+        for (Object objet : liste) {
+            compteur += 1;
+            System.out.println("[" + compteur + "] -> " + objet);
+        }
+    }
+
     public void afficherGrille(Joueur joueur)
     {
         // METHODES
         Grille grille = joueur.getGrille();
-        StringBuilder colonne = new StringBuilder().append("   ");
+        StringBuilder ligne = new StringBuilder().append("   ");
         for (int i = 0; i < grille.getAxeY(); i++) {
-            colonne.append(i).append("__");
+            ligne.append(i).append("__");
         }
-        colonne.delete((grille.getAxeY()*3)+1, ((grille.getAxeY()*3)+3));
-        System.out.println(colonne);
+        ligne.delete((grille.getAxeY()*3)+1, ((grille.getAxeY()*3)+3));
+        ligne.append(" Y");
+
+        System.out.println(ligne);
 
         for (int i = 0; i < grille.getAxeX(); i++)
         {
-            StringBuilder ligne = new StringBuilder();
-            ligne.append(i).append("| ");
+            StringBuilder colonne = new StringBuilder();
+            colonne.append(i).append("| ");
             for (int j = 0; j < grille.getAxeY(); j++) {
-                ligne.append(grille.getGrille()[i][j]).append("  ");
+                colonne.append(grille.getGrille()[i][j]).append("  ");
             }
-            System.out.println(ligne);
+            System.out.println(colonne);
         }
+        System.out.println("X");
         System.out.println(" [ Grille de " + joueur.getNom() + " ]");
     }
 

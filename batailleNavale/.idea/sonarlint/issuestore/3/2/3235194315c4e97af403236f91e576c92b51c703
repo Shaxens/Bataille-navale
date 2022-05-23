@@ -1,0 +1,33 @@
+
+[	java:S1127"FDefine and throw a dedicated exception instead of using a generic one.(¶ÿß½
+`	java:S1123"FDefine and throw a dedicated exception instead of using a generic one.(õ•íøÿÿÿÿ
+`	java:S112u"FDefine and throw a dedicated exception instead of using a generic one.(ŒÚ„§ÿÿÿÿÿ
+s	java:S135>"YReduce the total number of break and continue statements in this loop to use at most one.(˜ïˆÿÿÿÿÿ
+‹
+java:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(è¤Ûòûÿÿÿÿ
+V
+java:S1854E"@Remove this useless assignment to local variable "mauvaisChoix".(Úáºµ
+1
+java:S3626G"Remove this redundant jump.(ÉŠ©ƒ
+1
+java:S3626K"Remove this redundant jump.(ÉŠ©ƒ
+T
+java:S11557">Use isEmpty() to check whether the collection is empty or not.(¶ÿß½
+G
+java:S1481E"1Remove this unused "mauvaisChoix" local variable.(Úáºµ
+d
+java:S1854T"IRemove this useless assignment to local variable "listePositionPossible".(ÔÜÜòúÿÿÿÿ
+V
+java:S1854f"@Remove this useless assignment to local variable "mauvaisChoix".(Úáºµ
+1
+java:S3626h"Remove this redundant jump.(ÉŠ©ƒ
+Y
+java:S1155]">Use isEmpty() to check whether the collection is empty or not.(µî‡ûÿÿÿÿ
+G
+java:S1481f"1Remove this unused "mauvaisChoix" local variable.(Úáºµ
+T
+java:S1854p"9Remove this useless assignment to local variable "input".(Úî¿òøÿÿÿÿ
+2
+java:S3626‚"Remove this redundant jump.(ÉŠ©ƒ
+E
+java:S1481p"*Remove this unused "input" local variable.(Úî¿òøÿÿÿÿ

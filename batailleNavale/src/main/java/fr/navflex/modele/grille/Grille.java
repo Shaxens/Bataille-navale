@@ -158,11 +158,15 @@ public class Grille {
 				if (estPlacable(coordonnee))
 				{
 					x -= 1;
-					coordonnee = new Coordonnee(x, y);
+					if(x >= 0)
+					{
+						coordonnee = new Coordonnee(x, y);
+					}
 				}
 			}
 			return true;
 		}catch (IllegalArgumentException | ArrayIndexOutOfBoundsException iae) {
+			System.out.println("vers le haut erreur : "+ iae.getMessage());
 			return false;
 		}
 	}
@@ -224,7 +228,10 @@ public class Grille {
 			{
 				liste.add(coordonnee);
 				x -= 1;
-				coordonnee = new Coordonnee(x, y);
+				if (x >= 0)
+				{
+					coordonnee = new Coordonnee(x, y);
+				}
 			}
 		}
 		return liste;

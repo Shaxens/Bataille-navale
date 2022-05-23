@@ -1,0 +1,32 @@
+
+Z	java:S112!"FDefine and throw a dedicated exception instead of using a generic one.(ı¶˜9
+`	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(¯ó‚˜ùÿÿÿÿ
+‡
+java:S1319ÿ"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(ÌÄ¥İ
+…
+java:S1319˜"nThe type of "positionNavire" should be an interface such as "List" rather than the implementation "ArrayList".(ÚØö
+*
+java:S1700	"Rename field "grille"(Õıû=
+I
+java:S1199Æ"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ
+I
+java:S1199Õ"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ
+I
+java:S1199ä"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ
+I
+java:S1199ö"-Extract this nested code block into a method.(ÒÌâ–øÿÿÿÿ
+R
+java:S2589y"7Remove this expression which always evaluates to "true"(±„¸•şÿÿÿÿ
+S
+java:S2589‹"7Remove this expression which always evaluates to "true"(±„¸•şÿÿÿÿ
+M
+java:S2589V"7Remove this expression which always evaluates to "true"(ËÚÙ×
+S
+java:S2589"7Remove this expression which always evaluates to "true"(±„¸•şÿÿÿÿ
+S
+java:S2589´"7Remove this expression which always evaluates to "true"(±„¸•şÿÿÿÿ
+M
+java:S2589G"7Remove this expression which always evaluates to "true"(ËÚÙ×
+O
+java:S3516R"9Refactor this method to not always return the same value.(á„àÕ
+[	java:S106©"9Replace this use of System.out or System.err by a logger.(Æóé†øÿÿÿÿ8‰ÁÀˆ0

@@ -15,7 +15,7 @@ public class Main
     {
         Moniteur moniteur = new Moniteur();
         JoueurControleur joueurControleur = new JoueurControleur();
-        Joueur joueur = new Joueur(1, "LourdJesus", 7,7);
+        Joueur joueur = new Joueur(1, "LourdJesus", 5,7);
         joueurControleur.addJoueur(joueur);
 
         /*Grille grille = joueur.getGrille();
@@ -33,5 +33,6 @@ public class Main
         System.out.println(navire);*/
 
         joueurControleur.placerNavire(1);
+
     }
 }
