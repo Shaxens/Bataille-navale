@@ -36,7 +36,7 @@ public class JoueurControleur {
         this.listeJoueur.add(joueur);
     }
 
-    public Joueur selectionJoueur(int idJoueur)
+    public Joueur selectionnerJoueur(int idJoueur)
     {
         for (Joueur joueur : this.listeJoueur) {
             if (joueur.getId() == idJoueur)
@@ -49,12 +49,12 @@ public class JoueurControleur {
 
     public Navire selectionnerNavireAPlacer(int idJoueur) throws Exception
     {
-        Joueur joueur = selectionJoueur(idJoueur);
+        Joueur joueur = selectionnerJoueur(idJoueur);
         ArrayList<Navire> listeNavire = joueur.getFlotte().getListeNavireAPlacer();
         if (listeNavire.size() == 0) {throw new Exception("Tout vos navire sont deja en mer !");}
-        System.out.println("| Placement d'un navire |");
+        this.affichage.creerMessage("| Placement d'un navire |");
         this.affichage.afficherListeNavire(listeNavire);
-        System.out.println("Selectionnez un navire [?] : ");
+        this.affichage.creerMessage("Selectionnez un navire [?] : ");
         Scanner input = new Scanner(System.in);
         int selectionNavire;
 
@@ -62,17 +62,32 @@ public class JoueurControleur {
             try {
                 selectionNavire = input.nextInt();
                 Navire navire = joueur.getFlotte().getNavireById(selectionNavire, listeNavire);
-                System.out.println("Vous avez selectionne : " + navire);
+                this.affichage.creerMessage("Vous avez selectionne : " + navire);
                 return navire;
             } catch (InputMismatchException ime) {
                 String mauvaisChoix = input.next();
-                System.out.println("Saisie invalide, veuillez saisir un entier : ");
+                this.affichage.creerMessage("Saisie invalide, veuillez saisir un entier : ");
                 continue;
             } catch (IllegalArgumentException iae)
             {
-                System.out.println(iae.getMessage() + " Veuillez saisir un navire present dans la liste : ");
+                this.affichage.creerMessage(iae.getMessage() + " Veuillez saisir un navire present dans la liste : ");
                 continue;
             }
         }
+    }
+
+    public void placerNavire(int idJoueur) throws Exception {
+        Joueur joueur = selectionnerJoueur(idJoueur);
+        Navire navireAPlacer;
+        try {
+            navireAPlacer = selectionnerNavireAPlacer(idJoueur);
+        } catch (Exception e)
+        {
+            throw new Exception(e.getMessage());
+        }
+        this.affichage.afficherGrille(joueur);
+        this.affichage.creerMessage("Saisissez la Coordonnee de depart\nPosition en X : ");
+
+
     }
 }

@@ -16,7 +16,6 @@ public class Joueur {
     private String nom;
     private Flotte flotte;
     private Grille grille;
-    private Navire navire;
 
     // Getter
     public int getId() {
@@ -30,10 +29,6 @@ public class Joueur {
     public Flotte getFlotte() { return flotte; }
 
     public Grille getGrille() { return grille; }
-
-    public Navire getNavire() {
-        return navire;
-    }
 
     // Setter
     public void setId(int id) {
@@ -50,10 +45,6 @@ public class Joueur {
 
     public void setGrille(Grille grille) {
         this.grille = grille;
-    }
-
-    public void setNavire(Navire navire) {
-        this.navire = navire;
     }
 
     // Constructeur

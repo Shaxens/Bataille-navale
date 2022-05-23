@@ -7,6 +7,11 @@ import fr.navflex.modele.navire.Navire;
 import java.util.ArrayList;
 
 public class Moniteur {
+    public void creerMessage(String message)
+    {
+        System.out.println(message);
+    }
+
     public void afficherListeNavire(ArrayList<Navire> listeNavire)
     {
         for (Navire navire : listeNavire)
@@ -37,4 +42,6 @@ public class Moniteur {
         }
         System.out.println(" [ Grille de " + joueur.getNom() + " ]");
     }
+
+
 }

@@ -50,6 +50,6 @@ public class Coordonnee
 
     @Override
     public String toString() {
-        return "[ " + positionX + ", " + positionY + "]";
+        return "[" + positionX + "," + positionY + "]";
     }
 }

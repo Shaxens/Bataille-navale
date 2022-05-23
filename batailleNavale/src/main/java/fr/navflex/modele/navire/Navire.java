@@ -80,6 +80,7 @@ public class Navire
 
     public void setInGrille(boolean inGrille) {
         this.inGrille = inGrille;
+        this.setPointsVie();
     }
 
     public void setPointsVie() {this.pointsVie = this.getPosition().size();}

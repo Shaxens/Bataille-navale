@@ -18,11 +18,20 @@ public class Main
         Joueur joueur = new Joueur(1, "LourdJesus", 7,7);
         joueurControleur.addJoueur(joueur);
 
-        Grille grille = joueur.getGrille();
+        /*Grille grille = joueur.getGrille();
         ArrayList<Navire> liste = joueur.getFlotte().getListeNavireAPlacer();
+        Navire navire = joueur.getFlotte().getNavireById(3, liste);
 
-        joueurControleur.selectionnerNavireAPlacer(1);
+
+        ArrayList<ArrayList<Coordonnee>> listePosisition = grille.getListePositionPossible(new Coordonnee(3,3), navire);
+        ArrayList<Coordonnee> positionNavire = listePosisition.get(3);
+
+        System.out.println(navire);
+        grille.placerNavireSurGrille(positionNavire, navire);
 
         moniteur.afficherGrille(joueur);
+        System.out.println(navire);*/
+
+        joueurControleur.placerNavire(1);
     }
 }

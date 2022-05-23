@@ -1,5 +1,9 @@
 package fr.navflex.modele.grille;
 
+import fr.navflex.modele.navire.Navire;
+
+import java.util.ArrayList;
+
 public class Grille {
 	// ATTRIBUTS
 	private int[][] grille;
@@ -24,7 +28,7 @@ public class Grille {
 	public void setGrille(int axeX, int axeY) throws Exception {
 		if (axeX * axeY >= 20) {
 			this.grille = new int[axeX][axeY];
-			this.remplirTableau(0);
+			this.remplirTableau();
 		} else {
 			throw new Exception("La grille doit être au minimum de 20 cases");
 		}
@@ -41,17 +45,17 @@ public class Grille {
 	}
 
 	// METHODES
-	private void remplirTableau(int valeur)
+	private void remplirTableau()
 	{
 		for (int i = 0; i < this.getAxeX(); i++)
 		{
 			for (int j = 0; j < this.getAxeY(); j++) {
-				this.getGrille()[i][j] = valeur;
+				this.getGrille()[i][j] = 0;
 			}
 		}
 	}
 
-	public boolean existeSurCetteGrille(Coordonnee coordonnee)
+	private boolean existeSurCetteGrille(Coordonnee coordonnee)
 	{
 		if (!(this.axeX >= coordonnee.getPositionX() && this.axeY >= coordonnee.getPositionY()))
 		{
@@ -60,7 +64,7 @@ public class Grille {
 		return true;
 	}
 
-	public int quelleValeurA(Coordonnee coordonnee) throws IllegalArgumentException
+	public int getOnCoordonnee(Coordonnee coordonnee) throws IllegalArgumentException
 	{
 		try
 		{
@@ -75,7 +79,7 @@ public class Grille {
 		return -1;
 	}
 
-	public boolean placerPointSurGrille(Coordonnee coordonnee, int valeur) throws IllegalArgumentException
+	public boolean setOnCoordonnee(Coordonnee coordonnee, int valeur) throws IllegalArgumentException
 	{
 		try
 		{
@@ -91,9 +95,187 @@ public class Grille {
 		return false;
 	}
 
-	public boolean estPlacable(Coordonnee coordonnee, int longueurNavire)
+	private boolean estPlacable(Coordonnee coordonnee)
 	{
+		try
+		{
+			int valeur = this.getOnCoordonnee(coordonnee);
+			if (valeur == 0)
+			{
+				return true;
+			}
+			throw new IllegalArgumentException("Erreur : Un point est deja en place en coordonnee " + ".");
 
-		return true;
+		} catch (IllegalArgumentException iae)
+		{
+			throw new IllegalArgumentException(iae.getMessage());
+		}
+	}
+
+	private boolean placementVersLaDroitePossible(Coordonnee coordonnee, int longueur)
+	{
+		int x = coordonnee.getPositionX();
+		int y = coordonnee.getPositionY();
+		try {
+			for (int i = 0; i < longueur; i++) {
+				if (estPlacable(coordonnee))
+				{
+					y += 1;
+					coordonnee = new Coordonnee(x, y);
+				}
+			}
+			return true;
+		}catch (IllegalArgumentException | ArrayIndexOutOfBoundsException iae) {
+			return false;
+		}
+	}
+
+	private boolean placementVersLaGauchePossible(Coordonnee coordonnee, int longueur)
+	{
+		int x = coordonnee.getPositionX();
+		int y = coordonnee.getPositionY();
+		try {
+			for (int i = 0; i < longueur; i++) {
+				if (estPlacable(coordonnee))
+				{
+					y -= 1;
+					coordonnee = new Coordonnee(x, y);
+				}
+			}
+			return true;
+		}catch (IllegalArgumentException | ArrayIndexOutOfBoundsException iae) {
+			return false;
+		}
+
+	}
+
+	private boolean placementVersLeHautPossible(Coordonnee coordonnee, int longueur)
+	{
+		int x = coordonnee.getPositionX();
+		int y = coordonnee.getPositionY();
+		try {
+			for (int i = 0; i < longueur; i++) {
+				if (estPlacable(coordonnee))
+				{
+					x -= 1;
+					coordonnee = new Coordonnee(x, y);
+				}
+			}
+			return true;
+		}catch (IllegalArgumentException | ArrayIndexOutOfBoundsException iae) {
+			return false;
+		}
+	}
+
+	private boolean placementVersLeBasPossible(Coordonnee coordonnee, int longueur)
+	{
+		int x = coordonnee.getPositionX();
+		int y = coordonnee.getPositionY();
+		try {
+			for (int i = 0; i < longueur; i++) {
+				if (estPlacable(coordonnee))
+				{
+					x += 1;
+					coordonnee = new Coordonnee(x, y);
+				}
+			}
+			return true;
+		}catch (IllegalArgumentException | ArrayIndexOutOfBoundsException iae) {
+			return false;
+		}
+	}
+
+	private ArrayList<Coordonnee> creerListeCoordonneeVersLaDroite(Coordonnee coordonnee, int longueur)
+	{
+		int x = coordonnee.getPositionX();
+		int y = coordonnee.getPositionY();
+		ArrayList<Coordonnee> liste = new ArrayList<>();
+		for (int i = 0; i < longueur; i++) {
+			{
+				liste.add(coordonnee);
+				y += 1;
+				coordonnee = new Coordonnee(x, y);
+			}
+		}
+		return liste;
+	}
+
+	private ArrayList<Coordonnee> creerListeCoordonneeVersLaGauche(Coordonnee coordonnee, int longueur)
+	{
+		int x = coordonnee.getPositionX();
+		int y = coordonnee.getPositionY();
+		ArrayList<Coordonnee> liste = new ArrayList<>();
+		for (int i = 0; i < longueur; i++) {
+			{
+				liste.add(coordonnee);
+				y -= 1;
+				coordonnee = new Coordonnee(x, y);
+			}
+		}
+		return liste;
+	}
+
+	private ArrayList<Coordonnee> creerListeCoordonneeVersLeHaut(Coordonnee coordonnee, int longueur)
+	{
+		int x = coordonnee.getPositionX();
+		int y = coordonnee.getPositionY();
+		ArrayList<Coordonnee> liste = new ArrayList<>();
+		for (int i = 0; i < longueur; i++) {
+			{
+				liste.add(coordonnee);
+				x -= 1;
+				coordonnee = new Coordonnee(x, y);
+			}
+		}
+		return liste;
+	}
+
+	private ArrayList<Coordonnee> creerListeCoordonneeVersLeBas(Coordonnee coordonnee, int longueur)
+	{
+		int x = coordonnee.getPositionX();
+		int y = coordonnee.getPositionY();
+		ArrayList<Coordonnee> liste = new ArrayList<>();
+		for (int i = 0; i < longueur; i++) {
+			{
+				liste.add(coordonnee);
+				x += 1;
+				coordonnee = new Coordonnee(x, y);
+			}
+		}
+		return liste;
+	}
+
+	public ArrayList<ArrayList<Coordonnee>> getListePositionPossible(Coordonnee coordonnee, Navire navire)
+	{
+		ArrayList<ArrayList<Coordonnee>> listePositionPossible = new ArrayList<>();
+		int longueur = navire.getLongueur();
+
+		if (this.placementVersLaDroitePossible(coordonnee, longueur))
+		{
+			listePositionPossible.add(this.creerListeCoordonneeVersLaDroite(coordonnee, longueur));
+		}
+		if (this.placementVersLaGauchePossible(coordonnee, longueur))
+		{
+			listePositionPossible.add(this.creerListeCoordonneeVersLaGauche(coordonnee,longueur));
+		}
+		if (this.placementVersLeHautPossible(coordonnee, longueur))
+		{
+			listePositionPossible.add(this.creerListeCoordonneeVersLeHaut(coordonnee,longueur));
+		}
+		if (this.placementVersLeBasPossible(coordonnee, longueur))
+		{
+			listePositionPossible.add(this.creerListeCoordonneeVersLeBas(coordonnee,longueur));
+		}
+
+		return listePositionPossible;
+	}
+
+	public void placerNavireSurGrille(ArrayList<Coordonnee> positionNavire, Navire navire)
+	{
+		for (Coordonnee pointsAPlacer : positionNavire) {
+			this.setOnCoordonnee(pointsAPlacer, navire.getId());
+		}
+		navire.setPosition(positionNavire);
+		navire.setInGrille(true);
 	}
 }

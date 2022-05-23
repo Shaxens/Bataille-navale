@@ -62,6 +62,10 @@ public class Flotte {
         return listeNavireAPlacer;
     }
 
+    public ArrayList<Navire> getAllNavire()
+    {
+        return this.getListeNavire();
+    }
 
     @Override
     public String toString() {
