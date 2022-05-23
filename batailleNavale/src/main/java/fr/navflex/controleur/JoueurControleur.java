@@ -70,7 +70,7 @@ public class JoueurControleur {
         {
             try {
                 int choixDansListe = verifInputEntier();
-                if (liste.size() < choixDansListe || choixDansListe > 1)
+                if (liste.size() < choixDansListe || choixDansListe < 1)
                 {
                     throw new IllegalArgumentException("Erreur : " + choixDansListe + " n est pas une option de la liste.");
                 }
