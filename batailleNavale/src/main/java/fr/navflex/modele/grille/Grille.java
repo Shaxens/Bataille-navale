@@ -95,7 +95,7 @@ public class Grille {
 		return false;
 	}
 
-	private boolean estPlacable(Coordonnee coordonnee)
+	public boolean estPlacable(Coordonnee coordonnee)
 	{
 		try
 		{
@@ -104,7 +104,7 @@ public class Grille {
 			{
 				return true;
 			}
-			throw new IllegalArgumentException("Erreur : Un point est deja en place en coordonnee " + ".");
+			throw new IllegalArgumentException("Erreur : Un point est deja en place en coordonnee " + coordonnee + ".");
 
 		} catch (IllegalArgumentException iae)
 		{
@@ -134,12 +134,19 @@ public class Grille {
 	{
 		int x = coordonnee.getPositionX();
 		int y = coordonnee.getPositionY();
+		if (y + 1 < longueur)
+		{
+			return false;
+		}
 		try {
 			for (int i = 0; i < longueur; i++) {
 				if (estPlacable(coordonnee))
 				{
 					y -= 1;
-					coordonnee = new Coordonnee(x, y);
+					if (y >= 0)
+					{
+						coordonnee = new Coordonnee(x, y);
+					}
 				}
 			}
 			return true;
@@ -153,6 +160,10 @@ public class Grille {
 	{
 		int x = coordonnee.getPositionX();
 		int y = coordonnee.getPositionY();
+		if (x + 1 < longueur)
+		{
+			return false;
+		}
 		try {
 			for (int i = 0; i < longueur; i++) {
 				if (estPlacable(coordonnee))
@@ -166,7 +177,6 @@ public class Grille {
 			}
 			return true;
 		}catch (IllegalArgumentException | ArrayIndexOutOfBoundsException iae) {
-			System.out.println("vers le haut erreur : "+ iae.getMessage());
 			return false;
 		}
 	}
@@ -213,7 +223,10 @@ public class Grille {
 			{
 				liste.add(coordonnee);
 				y -= 1;
-				coordonnee = new Coordonnee(x, y);
+				if (y >= 0)
+				{
+					coordonnee = new Coordonnee(x, y);
+				}
 			}
 		}
 		return liste;

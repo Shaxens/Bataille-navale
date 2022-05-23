@@ -15,24 +15,12 @@ public class Main
     {
         Moniteur moniteur = new Moniteur();
         JoueurControleur joueurControleur = new JoueurControleur();
-        Joueur joueur = new Joueur(1, "LourdJesus", 5,7);
+        Joueur joueur = new Joueur(1, "LourdJesus", 6,6);
         joueurControleur.addJoueur(joueur);
 
-        /*Grille grille = joueur.getGrille();
-        ArrayList<Navire> liste = joueur.getFlotte().getListeNavireAPlacer();
-        Navire navire = joueur.getFlotte().getNavireById(3, liste);
-
-
-        ArrayList<ArrayList<Coordonnee>> listePosisition = grille.getListePositionPossible(new Coordonnee(3,3), navire);
-        ArrayList<Coordonnee> positionNavire = listePosisition.get(3);
-
-        System.out.println(navire);
-        grille.placerNavireSurGrille(positionNavire, navire);
-
-        moniteur.afficherGrille(joueur);
-        System.out.println(navire);*/
-
         joueurControleur.placerNavire(1);
+        joueurControleur.placerNavire(1);
+
 
     }
 }

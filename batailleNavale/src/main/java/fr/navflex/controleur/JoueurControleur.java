@@ -48,30 +48,59 @@ public class JoueurControleur {
         return null;
     }
 
+    public int verifInputEntier()
+    {
+        Scanner scanner = new Scanner(System.in);
+
+        while (true)
+        {
+            try {
+                return scanner.nextInt();
+            } catch (InputMismatchException ime) {
+                String mauvaisChoix = scanner.next();
+                this.affichage.creerMessage("Erreur : Saisie invalide, veuillez saisir un entier : ");
+                continue;
+            }
+        }
+    }
+
+    public int verifInputChoixListeObjetSansId(ArrayList liste)
+    {
+        while (true)
+        {
+            try {
+                int choixDansListe = verifInputEntier();
+                if (liste.size() < choixDansListe || choixDansListe > 1)
+                {
+                    throw new IllegalArgumentException("Erreur : " + choixDansListe + " n est pas une option de la liste.");
+                }
+                return choixDansListe;
+            } catch (InputMismatchException | IllegalArgumentException ime) {
+                this.affichage.creerMessage(ime.getMessage());
+                continue;
+            }
+        }
+    }
+
     public Navire selectionnerNavireAPlacer(int idJoueur) throws Exception
     {
         Joueur joueur = selectionnerJoueur(idJoueur);
         ArrayList<Navire> listeNavire = joueur.getFlotte().getListeNavireAPlacer();
         if (listeNavire.size() == 0) {throw new Exception("Tout vos navire sont deja en mer !");}
-        this.affichage.creerMessage("| Placement d'un navire |");
+        this.affichage.creerMessage("\n| Placement d'un navire |");
         this.affichage.afficherListeNavire(listeNavire);
-        this.affichage.creerMessage("Selectionnez un navire [?] : ");
-        Scanner input = new Scanner(System.in);
+        this.affichage.creerMessage("\nSelectionnez un navire [?] : ");
         int selectionNavire;
 
         while(true) {
             try {
-                selectionNavire = input.nextInt();
+                selectionNavire = verifInputEntier();
                 Navire navire = joueur.getFlotte().getNavireById(selectionNavire, listeNavire);
-                this.affichage.creerMessage("Vous avez selectionne : " + navire);
+                this.affichage.creerMessage("\nVous avez selectionne : " + navire);
                 return navire;
-            } catch (InputMismatchException ime) {
-                String mauvaisChoix = input.next();
-                this.affichage.creerMessage("Saisie invalide, veuillez saisir un entier : ");
-                continue;
             } catch (IllegalArgumentException iae)
             {
-                this.affichage.creerMessage(iae.getMessage() + " Veuillez saisir un navire present dans la liste : ");
+                this.affichage.creerMessage(iae.getMessage());
                 continue;
             }
         }
@@ -86,30 +115,33 @@ public class JoueurControleur {
             try {
                 this.affichage.creerMessage("Saisissez la Coordonnee de depart");
                 this.affichage.creerMessage("position en X : ");
-                int coordX = input.nextInt();
+                int coordX = verifInputEntier();
                 this.affichage.creerMessage("position en Y : ");
-                int coordY = input.nextInt();
-                listePositionPossible = joueur.getGrille().getListePositionPossible(new Coordonnee(coordX,coordY),navireAPlacer);
-                if (listePositionPossible.size() > 0)
+                int coordY = verifInputEntier();
+                if (joueur.getGrille().estPlacable(new Coordonnee(coordX, coordY)))
                 {
-                    return listePositionPossible;
+                    listePositionPossible = joueur.getGrille().getListePositionPossible(new Coordonnee(coordX,coordY),navireAPlacer);
+                    if (listePositionPossible.size() > 0)
+                    {
+                        return listePositionPossible;
+                    }
+                    else
+                    {
+                        throw new IllegalArgumentException("Erreur : Coordonnee de depart invalide, elle ne permet aucun placement pour ce navire.");
+                    }
                 }
-                else
-                {
-                    throw new IllegalArgumentException("Coordonnee de depart invalide, elle ne permet aucun placement pour ce navire.");
-                }
-            } catch (InputMismatchException ime) {
-                String mauvaisChoix = input.next();
-                this.affichage.creerMessage("Saisie invalide, veuillez saisir un entier : ");
+            } catch (Exception e) {
+                this.affichage.creerMessage(e.getMessage());
                 continue;
             }
         }
     }
 
+
+
     public boolean placerNavire(int idJoueur) throws Exception {
         Joueur joueur = selectionnerJoueur(idJoueur);
         Navire navireAPlacer;
-        Scanner input = new Scanner(System.in);
         try {
             navireAPlacer = selectionnerNavireAPlacer(idJoueur);
         } catch (Exception e)
@@ -122,7 +154,16 @@ public class JoueurControleur {
             try
             {
                 ArrayList<ArrayList<Coordonnee>> listePositionPossible = getListePositionPossibleAvecSaisieInitiale(idJoueur, navireAPlacer);
+                this.affichage.creerMessage("\nPosition possible depuis cette coordonnee :");
                 this.affichage.afficherListeObjetSansId(listePositionPossible);
+                this.affichage.creerMessage("Selectionnez la position voulue [?] : ");
+                int choixUtilisateur = verifInputChoixListeObjetSansId(listePositionPossible);
+                ArrayList<Coordonnee> positionChoisie = listePositionPossible.get(choixUtilisateur - 1);
+
+                joueur.getGrille().placerNavireSurGrille(positionChoisie,navireAPlacer);
+                this.affichage.creerMessage("\nVotre navire est pret au combat !");
+                this.affichage.afficherGrille(joueur);
+                this.affichage.creerMessage("" + navireAPlacer);
                 return true;
             } catch (IllegalArgumentException iae)
             {

@@ -39,7 +39,7 @@ public class Moniteur {
         }
         ligne.delete((grille.getAxeY()*3)+1, ((grille.getAxeY()*3)+3));
         ligne.append(" Y");
-
+        System.out.println("| Votre Grille  |");
         System.out.println(ligne);
 
         for (int i = 0; i < grille.getAxeX(); i++)
@@ -52,7 +52,6 @@ public class Moniteur {
             System.out.println(colonne);
         }
         System.out.println("X");
-        System.out.println(" [ Grille de " + joueur.getNom() + " ]");
     }
 
 
