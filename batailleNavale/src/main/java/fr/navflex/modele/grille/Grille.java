@@ -290,12 +290,37 @@ public class Grille {
 		return listePositionPossible;
 	}
 
-	public void placerNavireSurGrille(ArrayList<Coordonnee> positionNavire, Navire navire)
-	{
+	public void placerNavireSurGrille(ArrayList<Coordonnee> positionNavire, Navire navire) {
 		for (Coordonnee pointsAPlacer : positionNavire) {
 			this.setOnCoordonnee(pointsAPlacer, navire.getId());
 		}
 		navire.setPosition(positionNavire);
 		navire.setInGrille(true);
+	}
+
+	public void rafraichirNavireSurGrille(Navire navire)
+	{
+		ArrayList<Coordonnee> positionNavire = navire.getPosition();
+		for (Coordonnee pointsAPlacer : positionNavire) {
+			this.setOnCoordonnee(pointsAPlacer, navire.getId());
+		}
+		navire.setPointsVie();
+		if (navire.getPointsVie() == 0)
+		{
+			navire.setInGrille(false);
+		}
+	}
+
+	public int faireFeuEn(Coordonnee coordonnee) throws Exception {
+		int valeurCase;
+		try
+		{
+			valeurCase = getOnCoordonnee(coordonnee);
+		} catch (Exception e)
+		{
+			throw new Exception(e.getMessage());
+		}
+		// Finir
+		return valeurCase;
 	}
 }

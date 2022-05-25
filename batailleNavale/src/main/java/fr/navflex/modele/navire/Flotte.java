@@ -62,6 +62,19 @@ public class Flotte {
         return listeNavireAPlacer;
     }
 
+    public ArrayList<Navire> getListeNavireEnMer()
+    {
+        ArrayList<Navire> listeNavireAPlacer = new ArrayList<>();
+        for (Navire navire : this.getListeNavire())
+        {
+            if(navire.getInGrille())
+            {
+                listeNavireAPlacer.add(navire);
+            }
+        }
+        return listeNavireAPlacer;
+    }
+
     public ArrayList<Navire> getAllNavire()
     {
         return this.getListeNavire();

@@ -85,6 +85,11 @@ public class Navire
 
     public void setPointsVie() {this.pointsVie = this.getPosition().size();}
 
+    public void estToucheEn(Coordonnee coordonnee)
+    {
+        // A DEVELOPPER
+    }
+
     // METHODES
     @Override
     public String toString() {
