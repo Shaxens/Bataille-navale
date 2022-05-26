@@ -2,6 +2,7 @@ package fr.navflex.modele.grille;
 
 import fr.navflex.modele.navire.Navire;
 
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Coordonnee
@@ -51,5 +52,19 @@ public class Coordonnee
     @Override
     public String toString() {
         return "[" + positionX + "," + positionY + "]";
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Coordonnee that = (Coordonnee) o;
+        return positionX == that.positionX && positionY == that.positionY;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(positionX, positionY);
     }
 }

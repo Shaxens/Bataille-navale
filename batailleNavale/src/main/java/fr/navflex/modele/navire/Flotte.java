@@ -34,11 +34,22 @@ public class Flotte {
     }
 
     // METHODES
-
-
-    public Navire getNavireById(int id, ArrayList<Navire> listeNavire) throws IllegalArgumentException
+    public Navire getNavireById(int id) throws IllegalArgumentException
     {
         if (this.getListeNavire().size() > 0 && id <= 5 )
+        {
+            for (Navire navire : this.getListeNavire())
+            {
+                if (navire.getId() == id)
+                    return navire;
+            }
+        }
+        throw new IllegalArgumentException("Erreur : le navire [" + id + "] n'est pas dans la liste.");
+    }
+
+    public Navire getNavireByIdOnListe(int id, ArrayList<Navire> listeNavire) throws IllegalArgumentException
+    {
+        if (listeNavire.size() > 0 && id <= 5 )
         {
             for (Navire navire : listeNavire)
             {

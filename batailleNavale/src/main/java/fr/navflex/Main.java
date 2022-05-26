@@ -17,14 +17,15 @@ public class Main
         Moniteur moniteur = new Moniteur();
         JoueurControleur joueurControleur = new JoueurControleur();
         RandomizerTools randomizer = new RandomizerTools();
-        Joueur joueur = new Joueur(1, "LourdJesus", 6,6);
-        joueurControleur.addJoueur(joueur);
+        Joueur joueur1 = new Joueur(1, "LourdJesus", 6,6);
+        Joueur joueur2 = new Joueur(2, "InfameJuda", 6, 6);
+        joueurControleur.addJoueur(joueur1);
+        joueurControleur.addJoueur(joueur2);
 
-        Grille grille = joueur.getGrille();
-        randomizer.placementDesNaviresRandom(joueur);
+        Grille grille = joueur1.getGrille();
 
-        joueurControleur.getAffichage().afficherGrille(joueur);
-
+        randomizer.placementDesNaviresRandom(joueur1);
+        randomizer.placementDesNaviresRandom(joueur2);
 
     }
 }

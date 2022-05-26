@@ -95,7 +95,7 @@ public class JoueurControleur {
         while(true) {
             try {
                 selectionNavire = verifInputEntier();
-                Navire navire = joueur.getFlotte().getNavireById(selectionNavire, listeNavire);
+                Navire navire = joueur.getFlotte().getNavireByIdOnListe(selectionNavire, listeNavire);
                 this.affichage.creerMessage("\nVous avez selectionne : " + navire);
                 return navire;
             } catch (IllegalArgumentException iae)
@@ -168,6 +168,47 @@ public class JoueurControleur {
             } catch (IllegalArgumentException iae)
             {
                 this.affichage.creerMessage(iae.getMessage());
+                continue;
+            }
+        }
+    }
+
+    public boolean faireFeu(int idJoueur, int idJoueurCible)
+    {
+        Joueur joueur = selectionnerJoueur(idJoueur);
+        Joueur joueurCible = selectionnerJoueur(idJoueurCible);
+        this.getAffichage().creerMessage(joueur.getNom() + " ou souhaitez vous faire feu ? : ");
+        while (true)
+        {
+            try
+            {
+                this.getAffichage().creerMessage("Position en X : ");
+                int coordX = verifInputEntier();
+                this.getAffichage().creerMessage("Position en Y : ");
+                int coordY = verifInputEntier();
+                Coordonnee coordonnee = new Coordonnee(coordX, coordY);
+                int resultat = joueurCible.getGrille().faireFeuEn(coordonnee);
+                if (resultat != 0)
+                {
+                    Navire navire = joueurCible.getFlotte().getNavireById(resultat);
+                    navire.estToucheEn(coordonnee);
+                    if (navire.getPointsVie() > 0)
+                    {
+                        this.getAffichage().creerMessage("Boom ! touche !");
+                    }
+                    else
+                    {
+                        this.getAffichage().creerMessage("Boom ! touche.. Coule !!!");
+                    }
+                }
+                else
+                {
+                    this.getAffichage().creerMessage("Plouf ! Aucun navire n'a ete touche");
+                }
+                return true;
+            } catch (Exception e)
+            {
+                this.getAffichage().creerMessage(e.getMessage());
                 continue;
             }
         }
