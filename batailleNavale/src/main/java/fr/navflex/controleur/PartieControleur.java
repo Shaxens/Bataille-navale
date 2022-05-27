@@ -4,6 +4,7 @@ import fr.navflex.modele.grille.Grille;
 import fr.navflex.modele.joueur.Joueur;
 import fr.navflex.modele.partie.Partie;
 import fr.navflex.modele.partie.Tour;
+import fr.navflex.modele.utils.RandomizerTools;
 import fr.navflex.vue.Moniteur;
 
 import java.util.ArrayList;
@@ -124,7 +125,34 @@ public class PartieControleur {
         }
     }
 
-    public Partie initialiserPartie() throws Exception {
+    public void configurerGrilleDesJoueurs(ArrayList<Joueur> listeJoueurs) throws Exception {
+        ArrayList<String> optionsPlacement = new ArrayList<>();
+        optionsPlacement.add("[1] -> Placement au hasard");
+        optionsPlacement.add("[2] -> Placement manuel");
+        for (Joueur joueur : listeJoueurs) {
+            moniteur.creerMessage("\n" + joueur.getNom() + " voulez vous placer vos navires au hasard ou manuellement ? ");
+            for (String choix : optionsPlacement) {
+                moniteur.creerMessage(choix);
+            }
+            int choixJoueur = inputChoixListeObjetSansId(optionsPlacement);
+            if (choixJoueur == 1)
+            {
+                RandomizerTools randomizer = new RandomizerTools();
+                randomizer.placementDesNaviresRandom(joueur);
+            }
+            else if (choixJoueur == 2)
+            {
+                while (joueur.getFlotte().getListeNavireAPlacer().size() > 0)
+                {
+                    // add les joueur au controleur avant donc a tutiliser dans une methode qui le fait sinon erreur
+                    controleur.placerNavire(joueur.getId());
+                }
+            }
+            moniteur.afficherGrille(joueur);
+        }
+    }
+
+    public Partie configurerPartie() throws Exception {
         moniteur.creerMessage("\n| NOUVELLE PARTIE |\n");
         int nombreJoueur = initNombreJoueur();
         Grille grille = initGrille();
@@ -134,10 +162,16 @@ public class PartieControleur {
             String nomJoueur = inputString();
             listeJoueurs.add(new Joueur(i+1, nomJoueur, grille));
         }
+        for (Joueur joueur : listeJoueurs) {
+            controleur.addJoueur(joueur);
+        }
         moniteur.creerMessage("\nPartie initilize, voici les amiraux qui s'y affrontent : ");
         for (int i = 0; i < nombreJoueur ; i++) {
             moniteur.creerMessage("" + listeJoueurs.get(i));
         }
+        configurerGrilleDesJoueurs(listeJoueurs);
         return new Partie(1,listeJoueurs, new ArrayList<Tour>());
     }
+
+
 }
