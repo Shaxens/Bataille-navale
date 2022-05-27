@@ -1,5 +1,6 @@
 package fr.navflex.controleur;
 
+import fr.navflex.modele.grille.Grille;
 import fr.navflex.modele.joueur.Joueur;
 import fr.navflex.modele.partie.Partie;
 import fr.navflex.modele.partie.Tour;
@@ -15,6 +16,22 @@ public class PartieControleur {
     JoueurControleur controleur = new JoueurControleur();
 
     // OUTILS INPUT
+    public String inputString()
+    {
+        Scanner scanner = new Scanner(System.in);
+
+        while (true)
+        {
+            try {
+                return scanner.next();
+            } catch (InputMismatchException ime) {
+                String mauvaisChoix = scanner.next();
+                this.moniteur.creerMessage("Erreur : Saisie invalide : ");
+                continue;
+            }
+        }
+    }
+
     public int inputEntier()
     {
         Scanner scanner = new Scanner(System.in);
@@ -70,9 +87,9 @@ public class PartieControleur {
     }
 
     // METHODES
-    public Partie initialiserPartie()
+    private int initNombreJoueur()
     {
-        moniteur.creerMessage("\nNouvelle partie !\nVeuillez selectionner le nombre de Joueur : ");
+        moniteur.creerMessage("Veuillez selectionner le nombre de Joueur : ");
         int nombreJoueur = inputEntierPositif();
         while (nombreJoueur < 2)
         {
@@ -84,8 +101,43 @@ public class PartieControleur {
             }
             nombreJoueur = inputEntierPositif();
         }
+        return nombreJoueur;
+    }
 
+    private Grille initGrille()
+    {
+        Grille grille;
+        while (true)
+        {
+            try{
+                moniteur.creerMessage("Veuillez parametrer la taille de la grille \nSaisissez le nombre de ligne : ");
+                int nbLigne = inputEntierPositif();
+                moniteur.creerMessage("Saisissez le nombre de colonne : ");
+                int nbColonne = inputEntierPositif();
+                grille = new Grille(nbLigne, nbColonne);
+                return grille;
+            } catch (Exception e)
+            {
+                moniteur.creerMessage(e.getMessage());
+                continue;
+            }
+        }
+    }
 
-        return new Partie(1,new ArrayList<Joueur>(), new ArrayList<Tour>());
+    public Partie initialiserPartie() throws Exception {
+        moniteur.creerMessage("\n| NOUVELLE PARTIE |\n");
+        int nombreJoueur = initNombreJoueur();
+        Grille grille = initGrille();
+        ArrayList<Joueur> listeJoueurs = new ArrayList<>();
+        for (int i = 0; i < nombreJoueur ; i++) {
+            moniteur.creerMessage("Joueur " + (i+1) + " saisissez votre nom : ");
+            String nomJoueur = inputString();
+            listeJoueurs.add(new Joueur(i+1, nomJoueur, grille));
+        }
+        moniteur.creerMessage("\nPartie initilize, voici les amiraux qui s'y affrontent : ");
+        for (int i = 0; i < nombreJoueur ; i++) {
+            moniteur.creerMessage("" + listeJoueurs.get(i));
+        }
+        return new Partie(1,listeJoueurs, new ArrayList<Tour>());
     }
 }

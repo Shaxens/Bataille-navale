@@ -48,12 +48,12 @@ public class Joueur {
     }
 
     // Constructeur
-    public Joueur (int id,String nom, int ligne, int colonne) throws Exception
+    public Joueur (int id,String nom, Grille grille) throws Exception
     {
         this.setId(id);
         this.setNom(nom);
         this.setFlotte(new Flotte(this.getId()));  // La Flotte du Joueur possède donc le meme ID que le Joueur
-        this.setGrille(new Grille(ligne, colonne));
+        this.setGrille(grille);
     }
 
     // METHODES
