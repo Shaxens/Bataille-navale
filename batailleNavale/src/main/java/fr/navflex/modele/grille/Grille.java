@@ -57,7 +57,7 @@ public class Grille {
 
 	private boolean existeSurCetteGrille(Coordonnee coordonnee)
 	{
-		if (!(this.axeX >= coordonnee.getPositionX() && this.axeY >= coordonnee.getPositionY()))
+		if (!(this.axeX > coordonnee.getPositionX() && this.axeY > coordonnee.getPositionY()))
 		{
 			throw new IllegalArgumentException("Erreur : La Coordonnee " + coordonnee + " n'est pas sur cette grille.");
 		}

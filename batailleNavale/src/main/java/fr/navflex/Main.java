@@ -9,6 +9,8 @@ public class Main
     {
         PartieControleur partieControleur = new PartieControleur();
         Partie partie = partieControleur.configurerPartie();
+        partieControleur.startPartie(partie);
+
 
     }
 }

@@ -71,7 +71,6 @@ public class Joueur {
 
     @Override
     public String toString() {
-        System.out.println("Joueur [" + this.getId() + "] : " + this.getNom());
-        return "" + this.getFlotte();
+        return "[ " + this.getNom() + " ]";
     }
 }
