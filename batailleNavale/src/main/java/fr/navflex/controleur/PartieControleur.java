@@ -98,7 +98,7 @@ public class PartieControleur {
                 moniteur.creerMessage("Si il n'y a aucun joueur on va s'ennuyer, faites un choix plus raisonnable :  ");
             }
             else if (nombreJoueur == 1) {
-                moniteur.creerMessage("Ah bonne idee c'est valide ! un mode contre moi-meme arrive bientot !\nMais pour l'instant jouez plutot avec au moins un ami, combien d'ami du coup ? :");
+                moniteur.creerMessage("Ah bonne idee c'est valide ! un mode contre moi-meme arrive bientot !\nMais pour l'instant jouez plutot avec au moins un ami, combien serez-vous du coup ? :");
             }
             nombreJoueur = inputEntierPositif();
         }
@@ -126,6 +126,9 @@ public class PartieControleur {
     }
 
     public void configurerGrilleDesJoueurs(ArrayList<Joueur> listeJoueurs) throws Exception {
+        for (Joueur joueur : listeJoueurs) {
+            controleur.addJoueur(joueur);
+        }
         ArrayList<String> optionsPlacement = new ArrayList<>();
         optionsPlacement.add("[1] -> Placement au hasard");
         optionsPlacement.add("[2] -> Placement manuel");
@@ -144,7 +147,6 @@ public class PartieControleur {
             {
                 while (joueur.getFlotte().getListeNavireAPlacer().size() > 0)
                 {
-                    // add les joueur au controleur avant donc a tutiliser dans une methode qui le fait sinon erreur
                     controleur.placerNavire(joueur.getId());
                 }
             }
@@ -155,15 +157,13 @@ public class PartieControleur {
     public Partie configurerPartie() throws Exception {
         moniteur.creerMessage("\n| NOUVELLE PARTIE |\n");
         int nombreJoueur = initNombreJoueur();
-        Grille grille = initGrille();
+        Grille grilleInitiale = initGrille();
         ArrayList<Joueur> listeJoueurs = new ArrayList<>();
         for (int i = 0; i < nombreJoueur ; i++) {
             moniteur.creerMessage("Joueur " + (i+1) + " saisissez votre nom : ");
             String nomJoueur = inputString();
-            listeJoueurs.add(new Joueur(i+1, nomJoueur, grille));
-        }
-        for (Joueur joueur : listeJoueurs) {
-            controleur.addJoueur(joueur);
+            Grille grilleJoueur = new Grille(grilleInitiale.getAxeX(), grilleInitiale.getAxeY());
+            listeJoueurs.add(new Joueur(i+1, nomJoueur, grilleJoueur));
         }
         moniteur.creerMessage("\nPartie initilize, voici les amiraux qui s'y affrontent : ");
         for (int i = 0; i < nombreJoueur ; i++) {
