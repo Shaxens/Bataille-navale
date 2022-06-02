@@ -1,21 +1,9 @@
 
-h
-8src/test/java/fr/navflex/gameplay/navire/NavireTest.java,0\8\08ef5540b5a47b54bf15c9104c1c1130e12a1a1e
-[
-+src/main/java/fr/navflex/sql/Connexion.java,c\9\c94bcabd95231b4612f56ba449239613cd206791
-a
-1src/main/java/fr/navflex/modele/joueur/Score.java,a\5\a537ed605411be90af1929acc3df84c85bcb079b
-R
-"src/main/java/fr/navflex/Main.java,b\9\b9a03de1801c82ae8754306f48ea542e458030fc
 b
 2src/main/java/fr/navflex/modele/joueur/Joueur.java,a\a\aaead037f3dd9058e56c380c0c547bbf68e98367
 \
 ,src/main/java/fr/navflex/dao/DAOFactory.java,6\c\6c67e2bf18c15139ea6255c5df6464fe7cc6c257
-[
-+src/main/java/fr/navflex/dao/DAONavire.java,d\b\dbf83accbaaf7ef7bf3bc13dc8ddd8717db7bc72
 b
 2src/main/java/fr/navflex/modele/navire/Navire.java,2\9\2903eaa5b604bdcf4a25ce64683350d68de4b948
-b
-2src/main/java/fr/navflex/modele/navire/Flotte.java,d\f\df91dffbfdda587765bbd1684d6d9fd626ad32b4
 _
 /src/test/java/fr/navflex/modele/FlotteTest.java,e\2\e247117117156c1b4eab2d6cc6201557aa46671c
