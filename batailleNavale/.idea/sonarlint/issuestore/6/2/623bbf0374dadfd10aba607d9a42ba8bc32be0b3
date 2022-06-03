@@ -1,0 +1,11 @@
+
+[	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(ß€ö¬
+[	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(§ìÔ
+`	java:S112:"FDefine and throw a dedicated exception instead of using a generic one.(ŒÚ„§ÿÿÿÿÿ
+`	java:S112M"FDefine and throw a dedicated exception instead of using a generic one.(ŒÚ„§ÿÿÿÿÿ
+
+java:S1319"wThe type of "listeCoordonneeInvalide" should be an interface such as "List" rather than the implementation "ArrayList".(§ìÔ
+†
+java:S1319&"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(»Æô
+{
+java:S1319&"eThe type of "liste" should be an interface such as "List" rather than the implementation "ArrayList".(»Æô

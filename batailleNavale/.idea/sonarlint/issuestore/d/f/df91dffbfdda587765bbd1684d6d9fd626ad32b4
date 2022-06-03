@@ -1,0 +1,16 @@
+
+ã
+java:S1319"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(Æ√ä∂ˇˇˇˇˇ
+Å
+java:S13192"kThe type of "listeNavire" should be an interface such as "List" rather than the implementation "ArrayList".(ì¿ÈÎ
+Ü
+java:S1319?"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(ÇÖ††
+ç
+java:S1319L"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(ÔÇ¸È8íâ£ﬁè0
+í
+java:S1319Y"pThe return type of this method should be an interface such as "List" rather than the implementation "ArrayList".(…æ¯Â¸ˇˇˇˇ8‰∏å±í0
+Y
+java:S1155'">Use isEmpty() to check whether the collection is empty or not.(ø⁄Ó˙ˇˇˇˇ
+[
+java:S11554">Use isEmpty() to check whether the collection is empty or not.(çâæ›8åπå±í0
+N	java:S106b"9Replace this use of System.out or System.err by a logger.( ÛÇ∂
