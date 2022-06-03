@@ -20,7 +20,8 @@ public class JoueurTest {
 
     @Before
     public void setUp() throws Exception {
-        joueur = new Joueur(1, "Goldorak", 2, 20);
+        Grille grille = new Grille(2,20);
+        joueur = new Joueur(1, "Goldorak", grille);
     }
 
     @Test

@@ -2,6 +2,7 @@ package fr.navflex.modele.grille;
 
 import fr.navflex.modele.navire.Navire;
 
+import java.util.Objects;
 import java.util.Scanner;
 
 public class Coordonnee
@@ -32,70 +33,38 @@ public class Coordonnee
 
     // SETTERS
     public void setPositionX(int positionX) {
+        if (positionX < 0)
+        {
+           throw new IllegalArgumentException("Erreur : X est inferieur a 0.");
+        }
         this.positionX = positionX;
     }
-    public void setPositionY(int positionY) { this.positionY = positionY; }
+    public void setPositionY(int positionY) {
+        if (positionY < 0)
+        {
+            throw new IllegalArgumentException("Erreur : Y est inferieur a 0.");
+        }
+        this.positionY = positionY;
+    }
 
     // METHODES
-    public Coordonnee saisirCoordonnee()
-    {
-        Coordonnee coordonnee = new Coordonnee();
-
-        Scanner scan = new Scanner(System.in);
-        int positionX = 0;
-        int positionY = 0;
-
-        System.out.println("Entrez la position X : ");
-        try {
-            positionX = scan.nextInt();
-        } catch (Exception e)
-        {
-            System.out.println("Erreur : " + e);
-        }
-
-        System.out.println("Entrez la position Y : ");
-        try {
-            positionY = scan.nextInt();
-        } catch (Exception e)
-        {
-            System.out.println("Erreur : " + e);
-        }
-
-        coordonnee.setPositionX(positionX);
-        coordonnee.setPositionY(positionY);
-
-        return coordonnee;
-    }
-
-    public boolean estValideParTypeNavire(Navire navire) throws Exception // En cours de dev
-    {
-        if (navire.getPosition().size() > 0)
-        {
-            for (int i = 1; i < navire.getLongueur(); i++)
-            {
-                Coordonnee coordonneePrecedente = navire.getPosition().get(i-1);
-                int xSuivant = this.getPositionX();
-                int ySuivant = this.getPositionY();
-                int xPrecedent = coordonneePrecedente.getPositionX();
-                int yPrecedent = coordonneePrecedente.getPositionY();
-
-                if (xSuivant == xPrecedent && ySuivant == yPrecedent)
-                {
-                    throw new Exception("Erreur : Un des points du bateau est deja en coordonnee : " + this);
-                }
-                if (xSuivant - xPrecedent > 1)
-                {
-                    throw new Exception("Erreur : La ");
-                }
-            }
-        }
-        return true;
-    }
-
-
 
     @Override
     public String toString() {
-        return "[ " + positionX + ", " + positionY + "]";
+        return "[" + positionX + "," + positionY + "]";
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Coordonnee that = (Coordonnee) o;
+        return positionX == that.positionX && positionY == that.positionY;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(positionX, positionY);
     }
 }

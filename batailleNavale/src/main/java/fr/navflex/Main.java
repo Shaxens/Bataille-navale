@@ -1,15 +1,14 @@
 package fr.navflex;
 
-import fr.navflex.modele.joueur.Joueur;
-
+import fr.navflex.controleur.PartieControleur;
+import fr.navflex.modele.partie.Partie;
 
 public class Main
 {
     public static void main(String[] args) throws Exception
     {
+        PartieControleur partieControleur = new PartieControleur();
+        Partie partie = partieControleur.configurerPartie();
 
-        Joueur joueur = new Joueur(1, "LourdJesus", 10, 10);
-        joueur.toString();
-        joueur.saisirPositionDuNavire(5);
     }
 }

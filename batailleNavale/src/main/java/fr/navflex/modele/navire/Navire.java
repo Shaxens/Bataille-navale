@@ -80,26 +80,40 @@ public class Navire
 
     public void setInGrille(boolean inGrille) {
         this.inGrille = inGrille;
+        this.setPointsVie();
     }
 
     public void setPointsVie() {this.pointsVie = this.getPosition().size();}
 
+
     // METHODES
-
-
-
-
-
+    public void estToucheEn(Coordonnee coordonnee)
+    {
+        int index = 0;
+        ArrayList<Coordonnee> position = this.getPosition();
+        for (int i = 0; i < position.size(); i++) {
+            if (position.get(i).equals(coordonnee))
+            {
+                index = i;
+            }
+        }
+        position.remove(index);
+        this.setPointsVie();
+        if (this.getPointsVie() == 0)
+        {
+            this.setInGrille(false);
+        }
+    }
 
     @Override
     public String toString() {
         if (this.inGrille)
         {
-            return "Navire " + id + " : " + type + " ptsVie : " + pointsVie + " de longueur " + longueur + " en position " + position;
+            return "Navire [" + id + "] : " + type + " | longueur " + longueur + " | position " + position + " | ptsVie : " + pointsVie;
         }
         else
         {
-            return "Navire " + id + " : " + type + " de longueur " + longueur;
+            return "Navire [" + id + "] : " + type + " | longueur " + longueur;
         }
     }
 }
