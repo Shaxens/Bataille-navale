@@ -12,13 +12,14 @@ import java.util.Scanner;
 public class JoueurControleur {
     // ATTRIBUTS
     private ArrayList<Joueur> listeJoueur;
-    private final Moniteur affichage;
+    private final Moniteur moniteur;
+    private final InputControleur inputControleur = new InputControleur();
 
     // CONSTRUCTEUR
     public JoueurControleur()
     {
         this.listeJoueur = new ArrayList<>();
-        this.affichage = new Moniteur();
+        this.moniteur = new Moniteur();
     }
 
     // GETTERS
@@ -26,8 +27,8 @@ public class JoueurControleur {
         return listeJoueur;
     }
 
-    public Moniteur getAffichage() {
-        return affichage;
+    public Moniteur getMoniteur() {
+        return moniteur;
     }
 
 
@@ -48,59 +49,25 @@ public class JoueurControleur {
         return null;
     }
 
-    public int verifInputEntier()
-    {
-        Scanner scanner = new Scanner(System.in);
-
-        while (true)
-        {
-            try {
-                return scanner.nextInt();
-            } catch (InputMismatchException ime) {
-                String mauvaisChoix = scanner.next();
-                this.affichage.creerMessage("Erreur : Saisie invalide, veuillez saisir un entier : ");
-                continue;
-            }
-        }
-    }
-
-    public int verifInputChoixListeObjetSansId(ArrayList liste)
-    {
-        while (true)
-        {
-            try {
-                int choixDansListe = verifInputEntier();
-                if (liste.size() < choixDansListe || choixDansListe < 1)
-                {
-                    throw new IllegalArgumentException("Erreur : " + choixDansListe + " n est pas une option de la liste.");
-                }
-                return choixDansListe;
-            } catch (InputMismatchException | IllegalArgumentException ime) {
-                this.affichage.creerMessage(ime.getMessage());
-                continue;
-            }
-        }
-    }
-
     public Navire selectionnerNavireAPlacer(int idJoueur) throws Exception
     {
         Joueur joueur = selectionnerJoueur(idJoueur);
         ArrayList<Navire> listeNavire = joueur.getFlotte().getListeNavireAPlacer();
         if (listeNavire.size() == 0) {throw new Exception("Tout vos navire sont deja en mer !");}
-        this.affichage.creerMessage("\n| Placement d'un navire |");
-        this.affichage.afficherListeNavire(listeNavire);
-        this.affichage.creerMessage("\nSelectionnez un navire [?] : ");
+        this.moniteur.creerMessage("\n| Placement d'un navire |");
+        this.moniteur.afficherListeNavire(listeNavire);
+        this.moniteur.creerMessage("\nSelectionnez un navire [?] : ");
         int selectionNavire;
 
         while(true) {
             try {
-                selectionNavire = verifInputEntier();
+                selectionNavire = inputControleur.inputEntier();
                 Navire navire = joueur.getFlotte().getNavireByIdOnListe(selectionNavire, listeNavire);
-                this.affichage.creerMessage("\nVous avez selectionne : " + navire);
+                this.moniteur.creerMessage("\nVous avez selectionne : " + navire);
                 return navire;
             } catch (IllegalArgumentException iae)
             {
-                this.affichage.creerMessage(iae.getMessage());
+                this.moniteur.creerMessage(iae.getMessage());
                 continue;
             }
         }
@@ -113,11 +80,11 @@ public class JoueurControleur {
         ArrayList<ArrayList<Coordonnee>> listePositionPossible = new ArrayList<>();
         while(true) {
             try {
-                this.affichage.creerMessage("Saisissez la Coordonnee de depart");
-                this.affichage.creerMessage("position en X : ");
-                int coordX = verifInputEntier();
-                this.affichage.creerMessage("position en Y : ");
-                int coordY = verifInputEntier();
+                this.moniteur.creerMessage("Saisissez la Coordonnee de depart");
+                this.moniteur.creerMessage("position en X : ");
+                int coordX = inputControleur.inputEntier();
+                this.moniteur.creerMessage("position en Y : ");
+                int coordY = inputControleur.inputEntier();
                 if (joueur.getGrille().estPlacable(new Coordonnee(coordX, coordY)))
                 {
                     listePositionPossible = joueur.getGrille().getListePositionPossible(new Coordonnee(coordX,coordY),navireAPlacer);
@@ -131,7 +98,7 @@ public class JoueurControleur {
                     }
                 }
             } catch (Exception e) {
-                this.affichage.creerMessage(e.getMessage());
+                this.moniteur.creerMessage(e.getMessage());
                 continue;
             }
         }
@@ -148,26 +115,26 @@ public class JoueurControleur {
         {
             throw new Exception(e.getMessage());
         }
-        this.affichage.afficherGrille(joueur);
+        this.moniteur.afficherGrille(joueur);
         while (true)
         {
             try
             {
                 ArrayList<ArrayList<Coordonnee>> listePositionPossible = getListePositionPossibleAvecSaisieInitiale(idJoueur, navireAPlacer);
-                this.affichage.creerMessage("\nPosition possible depuis cette coordonnee :");
-                this.affichage.afficherListeObjetSansId(listePositionPossible);
-                this.affichage.creerMessage("Selectionnez la position voulue [?] : ");
-                int choixUtilisateur = verifInputChoixListeObjetSansId(listePositionPossible);
+                this.moniteur.creerMessage("\nPosition possible depuis cette coordonnee :");
+                this.moniteur.afficherListeObjetSansId(listePositionPossible);
+                this.moniteur.creerMessage("Selectionnez la position voulue [?] : ");
+                int choixUtilisateur = inputControleur.inputChoixListeObjetSansId(listePositionPossible);
                 ArrayList<Coordonnee> positionChoisie = listePositionPossible.get(choixUtilisateur - 1);
 
                 joueur.getGrille().placerNavireSurGrille(positionChoisie,navireAPlacer);
-                this.affichage.creerMessage("\nVotre navire est pret au combat !");
-                this.affichage.afficherGrille(joueur);
-                this.affichage.creerMessage("" + navireAPlacer);
+                this.moniteur.creerMessage("\nVotre navire est pret au combat !");
+                this.moniteur.afficherGrille(joueur);
+                this.moniteur.creerMessage("" + navireAPlacer);
                 return true;
             } catch (IllegalArgumentException iae)
             {
-                this.affichage.creerMessage(iae.getMessage());
+                this.moniteur.creerMessage(iae.getMessage());
                 continue;
             }
         }
@@ -177,15 +144,16 @@ public class JoueurControleur {
     {
         Joueur joueur = selectionnerJoueur(idJoueur);
         Joueur joueurCible = selectionnerJoueur(idJoueurCible);
-        this.getAffichage().creerMessage(joueur.getNom() + " ou souhaitez vous faire feu ? : ");
+        moniteur.creerMessage(joueur.getNom() + " vous attaquez " + joueurCible.getNom());
+        moniteur.creerMessage("Ou souhaitez vous faire feu ? : ");
         while (true)
         {
             try
             {
-                this.getAffichage().creerMessage("Position en X : ");
-                int coordX = verifInputEntier();
-                this.getAffichage().creerMessage("Position en Y : ");
-                int coordY = verifInputEntier();
+                this.getMoniteur().creerMessage("Position en X : ");
+                int coordX = inputControleur.inputEntier();
+                this.getMoniteur().creerMessage("Position en Y : ");
+                int coordY = inputControleur.inputEntier();
                 Coordonnee coordonnee = new Coordonnee(coordX, coordY);
                 int resultat = joueurCible.getGrille().faireFeuEn(coordonnee);
                 if (resultat != 0)
@@ -194,21 +162,21 @@ public class JoueurControleur {
                     navire.estToucheEn(coordonnee);
                     if (navire.getPointsVie() > 0)
                     {
-                        this.getAffichage().creerMessage("Boom ! touche !");
+                        moniteur.creerMessage("Boom ! touche !");
                     }
                     else
                     {
-                        this.getAffichage().creerMessage("Boom ! touche.. Coule !!!");
+                        moniteur.creerMessage("Boom ! touche.. Coule !!!");
                     }
                 }
                 else
                 {
-                    this.getAffichage().creerMessage("Plouf ! Aucun navire n'a ete touche");
+                    moniteur.creerMessage("Plouf ! Aucun navire n'a ete touche");
                 }
                 return true;
             } catch (Exception e)
             {
-                this.getAffichage().creerMessage(e.getMessage());
+                moniteur.creerMessage(e.getMessage());
                 continue;
             }
         }

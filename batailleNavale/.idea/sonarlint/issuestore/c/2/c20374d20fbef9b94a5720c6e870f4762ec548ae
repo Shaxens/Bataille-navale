@@ -1,0 +1,14 @@
+
+J
+java:S3740"/Provide the parametrized type for this generic.(‹ıˆûúÿÿÿÿ
+
+java:S1319"kThe type of "listeNavire" should be an interface such as "List" rather than the implementation "ArrayList".(ÀñÌ”
+€
+java:S1319"eThe type of "liste" should be an interface such as "List" rather than the implementation "ArrayList".(‹ıˆûúÿÿÿÿ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(øºÑûúÿÿÿÿ
+N	java:S106"9Replace this use of System.out or System.err by a logger.(Êó‚¶
+N	java:S106"9Replace this use of System.out or System.err by a logger.(†¶®
+Z	java:S106*"9Replace this use of System.out or System.err by a logger.(ôÑ¹ãûÿÿÿÿ8ã¦ä¬0
+Z	java:S106+"9Replace this use of System.out or System.err by a logger.(éé âûÿÿÿÿ8ï¦ä¬0
+U	java:S1064"9Replace this use of System.out or System.err by a logger.(–ï–Ÿ8ÿ¦ä¬0
+U	java:S1066"9Replace this use of System.out or System.err by a logger.(¿ãÕ¤8‹§ä¬0
