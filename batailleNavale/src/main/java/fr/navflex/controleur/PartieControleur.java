@@ -13,85 +13,15 @@ import java.util.Scanner;
 
 public class PartieControleur {
     // ATTRIBUTS
-    Moniteur moniteur = new Moniteur();
-    JoueurControleur controleur = new JoueurControleur();
-
-    // OUTILS INPUT
-    public String inputString()
-    {
-        Scanner scanner = new Scanner(System.in);
-
-        while (true)
-        {
-            try {
-                return scanner.next();
-            } catch (InputMismatchException ime) {
-                String mauvaisChoix = scanner.next();
-                this.moniteur.creerMessage("Erreur : Saisie invalide : ");
-                continue;
-            }
-        }
-    }
-
-    public int inputEntier()
-    {
-        Scanner scanner = new Scanner(System.in);
-
-        while (true)
-        {
-            try {
-                return scanner.nextInt();
-            } catch (InputMismatchException ime) {
-                String mauvaisChoix = scanner.next();
-                this.moniteur.creerMessage("Erreur : Saisie invalide, veuillez saisir un entier : ");
-                continue;
-            }
-        }
-    }
-
-    public int inputEntierPositif()
-    {
-        Scanner scanner = new Scanner(System.in);
-
-        while (true)
-        {
-            try {
-                int input = scanner.nextInt();
-                if (input >= 0) {
-                    return input;
-                }
-                else throw new IllegalArgumentException("Erreur : Saisie invalide, veuillez saisir un entier superieur a 0 : ");
-            } catch (Exception e) {
-                String mauvaisChoix = scanner.next();
-                this.moniteur.creerMessage("Erreur : Saisie invalide, veuillez saisir un entier : ");
-                continue;
-            }
-        }
-    }
-
-    public int inputChoixListeObjetSansId(ArrayList liste)
-    {
-        while (true)
-        {
-            try {
-                int choixDansListe = inputEntierPositif();
-                if (liste.size() < choixDansListe || choixDansListe < 1)
-                {
-                    throw new IllegalArgumentException("Erreur : " + choixDansListe + " n est pas une option de la liste.");
-                }
-                return choixDansListe;
-            } catch (InputMismatchException | IllegalArgumentException ime) {
-                this.moniteur.creerMessage(ime.getMessage());
-                continue;
-            }
-        }
-    }
+    private final Moniteur moniteur = new Moniteur();
+    private final JoueurControleur controleur = new JoueurControleur();
+    private final InputControleur inputControleur = new InputControleur();
 
     // METHODES
     private int initNombreJoueur()
     {
         moniteur.creerMessage("Veuillez selectionner le nombre de Joueur : ");
-        int nombreJoueur = inputEntierPositif();
+        int nombreJoueur = inputControleur.inputEntierPositif();
         while (nombreJoueur < 2)
         {
             if (nombreJoueur == 0) {
@@ -100,7 +30,7 @@ public class PartieControleur {
             else if (nombreJoueur == 1) {
                 moniteur.creerMessage("Ah bonne idee c'est valide ! un mode contre moi-meme arrive bientot !\nMais pour l'instant jouez plutot avec au moins un ami, combien serez-vous du coup ? :");
             }
-            nombreJoueur = inputEntierPositif();
+            nombreJoueur = inputControleur.inputEntierPositif();
         }
         return nombreJoueur;
     }
@@ -112,9 +42,9 @@ public class PartieControleur {
         {
             try{
                 moniteur.creerMessage("Veuillez parametrer la taille de la grille \nSaisissez le nombre de ligne : ");
-                int nbLigne = inputEntierPositif();
+                int nbLigne = inputControleur.inputEntierPositif();
                 moniteur.creerMessage("Saisissez le nombre de colonne : ");
-                int nbColonne = inputEntierPositif();
+                int nbColonne = inputControleur.inputEntierPositif();
                 grille = new Grille(nbLigne, nbColonne);
                 return grille;
             } catch (Exception e)
@@ -127,7 +57,7 @@ public class PartieControleur {
 
     public void configurerGrilleDesJoueurs(ArrayList<Joueur> listeJoueurs) throws Exception {
         for (Joueur joueur : listeJoueurs) {
-            controleur.addJoueur(joueur);
+            controleur.addJoueur(joueur); // On ajoute ici les joueurs au controleur
         }
         ArrayList<String> optionsPlacement = new ArrayList<>();
         optionsPlacement.add("[1] -> Placement au hasard");
@@ -137,7 +67,7 @@ public class PartieControleur {
             for (String choix : optionsPlacement) {
                 moniteur.creerMessage(choix);
             }
-            int choixJoueur = inputChoixListeObjetSansId(optionsPlacement);
+            int choixJoueur = inputControleur.inputChoixListeObjetSansId(optionsPlacement);
             if (choixJoueur == 1)
             {
                 RandomizerTools randomizer = new RandomizerTools();
@@ -151,6 +81,7 @@ public class PartieControleur {
                 }
             }
             moniteur.afficherGrille(joueur);
+            moniteur.afficherListeNavire(joueur.getFlotte().getListeNavireEnMer());
         }
     }
 
@@ -161,11 +92,11 @@ public class PartieControleur {
         ArrayList<Joueur> listeJoueurs = new ArrayList<>();
         for (int i = 0; i < nombreJoueur ; i++) {
             moniteur.creerMessage("Joueur " + (i+1) + " saisissez votre nom : ");
-            String nomJoueur = inputString();
+            String nomJoueur = inputControleur.inputString();
             Grille grilleJoueur = new Grille(grilleInitiale.getAxeX(), grilleInitiale.getAxeY());
             listeJoueurs.add(new Joueur(i+1, nomJoueur, grilleJoueur));
         }
-        moniteur.creerMessage("\nPartie initilize, voici les amiraux qui s'y affrontent : ");
+        moniteur.creerMessage("\nPartie initialisee, voici les amiraux qui s'y affrontent : ");
         for (int i = 0; i < nombreJoueur ; i++) {
             moniteur.creerMessage("" + listeJoueurs.get(i));
         }
@@ -173,5 +104,40 @@ public class PartieControleur {
         return new Partie(1,listeJoueurs, new ArrayList<Tour>());
     }
 
+    public boolean verifierDefaite(Joueur joueur)
+    {
+        if (joueur.getFlotte().getListeNavireEnMer().size() == 0)
+        {
+            return true;
+        }
+        return false;
+    }
 
+    public void supprimerJoueurVaincu()
+    {
+        int joueurElimine = -1;
+        ArrayList<Joueur> listeJoueurs = controleur.getListeJoueur();
+        for (int i = 0; i < listeJoueurs.size(); i++) {
+            if (verifierDefaite(listeJoueurs.get(i)))
+            {
+                joueurElimine = i;
+            }
+        }
+        if (joueurElimine > -1)
+        {
+            listeJoueurs.remove(joueurElimine);
+        }
+    }
+
+    public void startPartie(Partie partie)
+    {
+        TourControleur tourControleur = new TourControleur(controleur.getListeJoueur()); // Le controleur doit forcement contenir des joueurs pour les transmettre au JoueurControleur de TourControleur
+        while (controleur.getListeJoueur().size() >= 2) // Tant qu'il reste au moins 2 joueur en course
+        {
+            Tour tour = tourControleur.startNouveauTour(partie.getHistorique().size() + 1);
+            partie.getHistorique().add(tour);
+            supprimerJoueurVaincu();
+        }
+
+    }
 }
